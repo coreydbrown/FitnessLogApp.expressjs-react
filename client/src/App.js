@@ -1,14 +1,19 @@
+import Main from "./pages/Main";
 import Landing from "./pages/Landing";
-import Nav from "./Nav";
-import Main from "./Main";
-import Box from "@mui/material/Box";
+import Login from "./pages/Login";
+import Error from "./pages/Error";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <Box sx={{ display: "flex" }}>
-      <Nav />
-      <Main />
-    </Box>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/landing" element={<Landing />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<Error />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
