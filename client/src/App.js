@@ -1,5 +1,11 @@
+import Landing from "./pages/Landing";
+
 function App() {
-  return <h1>Fit Crew Connect</h1>;
+  return (
+    <>
+      <Landing />
+    </>
+  );
 }
 
 export default App;
