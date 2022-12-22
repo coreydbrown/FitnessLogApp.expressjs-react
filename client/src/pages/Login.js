@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import LinkMUI from "@mui/material/Link";
 import Container from "@mui/material/Container";
@@ -9,6 +10,42 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    if (e.target.value == "") {
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    if (e.target.value == "") {
+      setPasswordError(true);
+    } else {
+      setPasswordError(false);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (email == "") {
+      setEmailError(true);
+    }
+    if (password == "") {
+      setPasswordError(true);
+    }
+    if (email != "" && password != "") {
+      console.log("submit");
+    }
+  };
+
   return (
     <Container maxWidth="xs">
       <Box
@@ -22,8 +59,18 @@ const Login = () => {
             <Typography component="h2" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate sx={{ mt: 1 }}>
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              noValidate
+              sx={{ mt: 1 }}
+            >
               <TextField
+                onChange={handleEmailChange}
+                error={emailError}
+                helperText={
+                  emailError ? "Please enter a valid email address" : ""
+                }
                 margin="normal"
                 required
                 fullWidth
@@ -34,6 +81,11 @@ const Login = () => {
                 autoFocus
               />
               <TextField
+                onChange={handlePasswordChange}
+                error={passwordError}
+                helperText={
+                  passwordError ? "Please enter a valid password" : ""
+                }
                 margin="normal"
                 required
                 fullWidth
