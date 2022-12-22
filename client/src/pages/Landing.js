@@ -1,4 +1,6 @@
 import activity_tracker_svg from "../images/activity_tracker.svg";
+import { Link } from "react-router-dom";
+import LinkMUI from "@mui/material/Link";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -36,9 +38,21 @@ const Landing = () => {
               culpa elit labore. Minim adipisicing nulla aute eiusmod velit
               pariatur in ipsum esse commodo anim et.
             </Typography>
-            <Button variant="contained" display="block" sx={{ mt: 2 }}>
-              Login/Register
+            <Button
+              component={Link}
+              to="/login"
+              variant="contained"
+              display="block"
+              sx={{ mt: 2, mb: 1 }}
+            >
+              Sign in
             </Button>
+            <Typography>
+              Don't have an account?{" "}
+              <LinkMUI component={Link} to="/register">
+                Sign up
+              </LinkMUI>
+            </Typography>
           </Box>
         </Box>
 
