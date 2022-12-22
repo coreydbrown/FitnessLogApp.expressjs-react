@@ -1,3 +1,4 @@
+import activity_tracker_svg from "../images/activity_tracker.svg";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
@@ -5,34 +6,55 @@ import Button from "@mui/material/Button";
 
 const Landing = () => {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="xl">
       <Box
-        sx={{
-          height: "100Vh",
-          maxWidth: "md",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
+        display="flex"
+        height="100Vh"
+        alignItems="center"
+        justifyContent="space-between"
       >
-        <Box>
-          <Typography component="h2" variant="h2" color="primary">
-            Fit Crew Connect
-          </Typography>
+        <Box
+          height="100%"
+          width={{
+            xs: "100%",
+            sm: "47.5%",
+            md: "47.5%",
+            lg: "47.5%",
+            xl: "47.5%",
+          }}
+          display="flex"
+          alignItems="center"
+        >
+          <Box>
+            <Typography component="h1" variant="h2" color="primary">
+              Fit Crew Connect
+            </Typography>
+            <Typography>
+              Irure laborum eu veniam nisi et ea aliquip quis est amet nulla
+              adipisicing. Labore laboris dolore elit commodo culpa in elit.
+              Eiusmod ullamco sunt eiusmod irure fugiat nostrud tempor irure
+              culpa elit labore. Minim adipisicing nulla aute eiusmod velit
+              pariatur in ipsum esse commodo anim et.
+            </Typography>
+            <Button variant="contained" display="block" sx={{ mt: 2 }}>
+              Login/Register
+            </Button>
+          </Box>
         </Box>
-        <Box>
-          <Typography>
-            Irure laborum eu veniam nisi et ea aliquip quis est amet nulla
-            adipisicing. Labore laboris dolore elit commodo culpa in elit.
-            Eiusmod ullamco sunt eiusmod irure fugiat nostrud tempor irure culpa
-            elit labore. Minim adipisicing nulla aute eiusmod velit pariatur in
-            ipsum esse commodo anim et.
-          </Typography>
-        </Box>
-        <Box>
-          <Button variant="contained" sx={{ mt: 2 }}>
-            Login/Register
-          </Button>
+
+        <Box
+          height="100%"
+          width="47.5%"
+          display={{
+            xs: "none",
+            sm: "flex",
+            md: "flex",
+            lg: "flex",
+            xl: "flex",
+          }}
+          alignItems="center"
+        >
+          <img src={activity_tracker_svg} alt="" style={{ width: "100%" }} />
         </Box>
       </Box>
     </Container>
