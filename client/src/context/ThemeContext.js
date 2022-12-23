@@ -1,7 +1,6 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { blue, indigo, red } from "@mui/material/colors";
 
 const getDesignTokens = (mode) => ({
   palette: {
@@ -28,10 +27,12 @@ const getDesignTokens = (mode) => ({
   },
 });
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+export const ColorModeContext = React.createContext({
+  toggleColorMode: () => {},
+});
 
 export default function ThemeContext({ children }) {
-  const [mode, setMode] = React.useState("dark");
+  const [mode, setMode] = React.useState("light");
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {

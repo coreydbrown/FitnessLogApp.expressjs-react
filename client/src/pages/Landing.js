@@ -1,4 +1,5 @@
 import ActivityTrackerSVG from "../svg-components/ActivityTrackerSVG";
+import ColorModeToggler from "../components/ColorModeToggler";
 import { Link } from "react-router-dom";
 import LinkMUI from "@mui/material/Link";
 import Container from "@mui/material/Container";
@@ -8,7 +9,8 @@ import Button from "@mui/material/Button";
 
 const Landing = () => {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="xl" sx={{ position: "relative" }}>
+      <ColorModeToggler />
       <Box
         display="flex"
         height="100Vh"

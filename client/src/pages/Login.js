@@ -1,3 +1,4 @@
+import ColorModeToggler from "../components/ColorModeToggler";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import LinkMUI from "@mui/material/Link";
@@ -47,14 +48,18 @@ const Login = () => {
   };
 
   return (
-    <Container maxWidth="xs">
+    <Container maxWidth="xl" sx={{ position: "relative" }}>
+      <ColorModeToggler />
       <Box
         height="100Vh"
         display="flex"
         justifyContent="center"
         alignItems="center"
       >
-        <Card component="main" sx={{ minWidth: 300, textAlign: "center" }}>
+        <Card
+          component="main"
+          sx={{ minWidth: 275, maxWidth: 350, textAlign: "center" }}
+        >
           <CardContent>
             <Typography component="h2" variant="h5">
               Sign in
