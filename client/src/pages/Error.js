@@ -1,4 +1,4 @@
-import page_not_found_svg from "../images/page_not_found.svg";
+import PageNotFoundSVG from "../svg-components/PageNotFoundSVG";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -18,7 +18,7 @@ const Error = () => {
         <Box
           width={{ xs: "100%", sm: "100%", md: "50%", lg: "50%", xl: "50%" }}
         >
-          <img src={page_not_found_svg} alt="" style={{ width: "100%" }} />
+          <PageNotFoundSVG />
         </Box>
         <Box mt={2} textAlign="center">
           <Typography component="h2" variant="h5">

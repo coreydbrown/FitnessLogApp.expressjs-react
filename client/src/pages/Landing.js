@@ -1,4 +1,4 @@
-import activity_tracker_svg from "../images/activity_tracker.svg";
+import ActivityTrackerSVG from "../svg-components/ActivityTrackerSVG";
 import { Link } from "react-router-dom";
 import LinkMUI from "@mui/material/Link";
 import Container from "@mui/material/Container";
@@ -19,10 +19,10 @@ const Landing = () => {
           height="100%"
           width={{
             xs: "100%",
-            sm: "47.5%",
-            md: "47.5%",
-            lg: "47.5%",
-            xl: "47.5%",
+            sm: "49%",
+            md: "49%",
+            lg: "49%",
+            xl: "49%",
           }}
           display="flex"
           alignItems="center"
@@ -42,6 +42,7 @@ const Landing = () => {
               component={Link}
               to="/login"
               variant="contained"
+              color="secondary"
               display="block"
               sx={{ mt: 2, mb: 1 }}
             >
@@ -49,7 +50,7 @@ const Landing = () => {
             </Button>
             <Typography>
               Don't have an account?{" "}
-              <LinkMUI component={Link} to="/register">
+              <LinkMUI component={Link} to="/register" color="secondary">
                 Sign up
               </LinkMUI>
             </Typography>
@@ -58,7 +59,7 @@ const Landing = () => {
 
         <Box
           height="100%"
-          width="47.5%"
+          width="49%"
           display={{
             xs: "none",
             sm: "flex",
@@ -68,7 +69,7 @@ const Landing = () => {
           }}
           alignItems="center"
         >
-          <img src={activity_tracker_svg} alt="" style={{ width: "100%" }} />
+          <ActivityTrackerSVG />
         </Box>
       </Box>
     </Container>
