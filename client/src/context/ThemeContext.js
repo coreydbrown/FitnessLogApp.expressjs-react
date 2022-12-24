@@ -3,6 +3,14 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 
 const getDesignTokens = (mode) => ({
+  typography: {
+    fontFamily: `"Montserrat", "Arial", sans-serif`,
+    fontSize: 14,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 700,
+  },
   palette: {
     mode,
     ...(mode === "light"
