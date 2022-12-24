@@ -16,24 +16,6 @@ const Login = () => {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    if (e.target.value == "") {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    if (e.target.value == "") {
-      setPasswordError(true);
-    } else {
-      setPasswordError(false);
-    }
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email == "") {
@@ -45,6 +27,24 @@ const Login = () => {
     if (email != "" && password != "") {
       console.log("submit");
     }
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    e.target.value === "" ? setEmailError(true) : setEmailError(false);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    e.target.value === "" ? setPasswordError(true) : setPasswordError(false);
+  };
+
+  const handleEmailBlur = (e) => {
+    if (email === "") setEmailError(true);
+  };
+
+  const handlePasswordBlur = (e) => {
+    if (password == "") setPasswordError(true);
   };
 
   return (
@@ -72,6 +72,7 @@ const Login = () => {
             >
               <TextField
                 onChange={handleEmailChange}
+                onBlur={handleEmailBlur}
                 error={emailError}
                 helperText={
                   emailError ? "Please enter a valid email address" : ""
@@ -87,6 +88,7 @@ const Login = () => {
               />
               <TextField
                 onChange={handlePasswordChange}
+                onBlur={handlePasswordBlur}
                 error={passwordError}
                 helperText={
                   passwordError ? "Please enter a valid password" : ""

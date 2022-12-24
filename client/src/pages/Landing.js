@@ -30,7 +30,12 @@ const Landing = () => {
           alignItems="center"
         >
           <Box>
-            <Typography component="h1" variant="h2" color="primary">
+            <Typography
+              component="h1"
+              variant="h2"
+              color="primary"
+              marginBottom={1}
+            >
               Fit Crew Connect
             </Typography>
             <Typography>
@@ -46,7 +51,7 @@ const Landing = () => {
               variant="contained"
               color="secondary"
               display="block"
-              sx={{ mt: 2, mb: 1 }}
+              sx={{ mt: 3, mb: 1 }}
             >
               Sign in
             </Button>

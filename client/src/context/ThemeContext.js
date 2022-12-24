@@ -40,7 +40,7 @@ export const ColorModeContext = React.createContext({
 });
 
 export default function ThemeContext({ children }) {
-  const [mode, setMode] = React.useState("light");
+  const [mode, setMode] = React.useState("dark");
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {

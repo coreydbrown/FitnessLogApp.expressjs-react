@@ -12,50 +12,14 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 const Register = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [firstNameError, setFirstNameError] = useState(false);
+  const [lastNameError, setLastNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
-  const [firstNameError, setFirstNameError] = useState("");
-  const [lastNameError, setLastNameError] = useState("");
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    if (e.target.value == "") {
-      setEmailError(true);
-    } else {
-      setEmailError(false);
-    }
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    if (e.target.value == "") {
-      setPasswordError(true);
-    } else {
-      setPasswordError(false);
-    }
-  };
-
-  const handleFirstNameChange = (e) => {
-    setFirstName(e.target.value);
-    if (e.target.value == "") {
-      setFirstNameError(true);
-    } else {
-      setFirstNameError(false);
-    }
-  };
-
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
-    if (e.target.value == "") {
-      setLastNameError(true);
-    } else {
-      setLastNameError(false);
-    }
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,6 +38,42 @@ const Register = () => {
     if (email != "" && password != "" && firstName != "" && lastName != "") {
       console.log("submit");
     }
+  };
+
+  const handleFirstNameChange = (e) => {
+    setFirstName(e.target.value);
+    e.target.value === "" ? setFirstNameError(true) : setFirstNameError(false);
+  };
+
+  const handleLastNameChange = (e) => {
+    setLastName(e.target.value);
+    e.target.value === "" ? setLastNameError(true) : setLastNameError(false);
+  };
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    e.target.value === "" ? setEmailError(true) : setEmailError(false);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+    e.target.value === "" ? setPasswordError(true) : setPasswordError(false);
+  };
+
+  const handleFirstNameBlur = (e) => {
+    if (firstName === "") setFirstNameError(true);
+  };
+
+  const handleLastNameBlur = (e) => {
+    if (lastName == "") setLastNameError(true);
+  };
+
+  const handleEmailBlur = (e) => {
+    if (email === "") setEmailError(true);
+  };
+
+  const handlePasswordBlur = (e) => {
+    if (password == "") setPasswordError(true);
   };
 
   return (
@@ -103,6 +103,7 @@ const Register = () => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     onChange={handleFirstNameChange}
+                    onBlur={handleFirstNameBlur}
                     error={firstNameError}
                     helperText={
                       firstNameError ? "Please enter your first name" : ""
@@ -119,6 +120,7 @@ const Register = () => {
                 <Grid item xs={12} sm={6}>
                   <TextField
                     onChange={handleLastNameChange}
+                    onBlur={handleLastNameBlur}
                     error={lastNameError}
                     helperText={
                       lastNameError ? "Please enter your last name" : ""
@@ -134,6 +136,7 @@ const Register = () => {
                 <Grid item xs={12}>
                   <TextField
                     onChange={handleEmailChange}
+                    onBlur={handleEmailBlur}
                     error={emailError}
                     helperText={
                       emailError ? "Please enter a valid email address" : ""
@@ -149,6 +152,7 @@ const Register = () => {
                 <Grid item xs={12}>
                   <TextField
                     onChange={handlePasswordChange}
+                    onBlur={handlePasswordBlur}
                     error={passwordError}
                     helperText={
                       passwordError ? "Please enter a valid password" : ""

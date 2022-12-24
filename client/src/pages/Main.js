@@ -1,5 +1,5 @@
-import Nav from "../Nav";
-import Content from "../Content";
+import Nav from "../components/Nav";
+import Content from "../components/Content";
 import Box from "@mui/material/Box";
 
 const Main = () => {

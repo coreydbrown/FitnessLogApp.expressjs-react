@@ -1,3 +1,4 @@
+import ColorModeToggler from "./ColorModeToggler";
 import Drawer from "@mui/material/Drawer";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,9 +19,10 @@ const Nav = () => {
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="h2">
             Fit Crew Connect
           </Typography>
+          <ColorModeToggler />
         </Toolbar>
       </AppBar>
       <Drawer
