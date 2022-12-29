@@ -7,14 +7,16 @@ import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import LoadingButton from "@mui/lab/LoadingButton";
+import LoginIcon from "@mui/icons-material/Login";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ const Login = () => {
       setPasswordError(true);
     }
     if (email != "" && password != "") {
+      setIsLoading(true);
       console.log("submit");
     }
   };
@@ -102,14 +105,17 @@ const Login = () => {
                 id="password"
                 autoComplete="current-password"
               />
-              <Button
+              <LoadingButton
                 type="submit"
+                endIcon={<LoginIcon />}
+                loading={isLoading}
+                loadingPosition="end"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
                 Sign In
-              </Button>
+              </LoadingButton>
               <Typography>
                 Don't have an account?{" "}
                 <LinkMUI component={Link} to="/register">

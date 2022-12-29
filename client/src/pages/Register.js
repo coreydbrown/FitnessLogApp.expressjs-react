@@ -8,8 +8,9 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import LoadingButton from "@mui/lab/LoadingButton";
+import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
@@ -20,6 +21,7 @@ const Register = () => {
   const [lastNameError, setLastNameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,6 +38,7 @@ const Register = () => {
       setLastNameError(true);
     }
     if (email != "" && password != "" && firstName != "" && lastName != "") {
+      setIsLoading(true);
       console.log("submit");
     }
   };
@@ -167,14 +170,17 @@ const Register = () => {
                   />
                 </Grid>
               </Grid>
-              <Button
+              <LoadingButton
                 type="submit"
+                endIcon={<AppRegistrationIcon />}
+                loading={isLoading}
+                loadingPosition="end"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
               >
                 Sign Up
-              </Button>
+              </LoadingButton>
               <Typography>
                 Already have an account?{" "}
                 <LinkMUI component={Link} to="/login">
