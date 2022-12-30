@@ -35,16 +35,23 @@ const getDesignTokens = (mode) => ({
   },
 });
 
+const currentTheme = localStorage.getItem("theme");
+if (!currentTheme) {
+  localStorage.setItem("theme", "dark");
+}
+
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
 });
 
 export default function ThemeContext({ children }) {
-  const [mode, setMode] = React.useState("dark");
+  const [mode, setMode] = React.useState(localStorage.getItem("theme"));
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
         setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
+        const theme = localStorage.getItem("theme");
+        localStorage.setItem("theme", theme === "light" ? "dark" : "light");
       },
     }),
     []
