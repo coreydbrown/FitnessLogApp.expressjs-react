@@ -20,13 +20,13 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email == "") {
+    if (email === "") {
       setEmailError(true);
     }
-    if (password == "") {
+    if (password === "") {
       setPasswordError(true);
     }
-    if (email != "" && password != "") {
+    if (email !== "" && password !== "") {
       setIsLoading(true);
       console.log("submit");
     }
@@ -47,7 +47,7 @@ const Login = () => {
   };
 
   const handlePasswordBlur = (e) => {
-    if (password == "") setPasswordError(true);
+    if (password === "") setPasswordError(true);
   };
 
   return (

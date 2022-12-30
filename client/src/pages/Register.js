@@ -1,5 +1,6 @@
+import { useState, useContext } from "react";
+import { UserContext } from "../context/user-context";
 import ColorModeToggler from "../components/ColorModeToggler";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import LinkMUI from "@mui/material/Link";
 import Container from "@mui/material/Container";
@@ -23,23 +24,30 @@ const Register = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const registerUser = useContext(UserContext).registerUser;
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email == "") {
+    if (email === "") {
       setEmailError(true);
     }
-    if (password == "") {
+    if (password === "") {
       setPasswordError(true);
     }
-    if (firstName == "") {
+    if (firstName === "") {
       setFirstNameError(true);
     }
-    if (lastName == "") {
+    if (lastName === "") {
       setLastNameError(true);
     }
-    if (email != "" && password != "" && firstName != "" && lastName != "") {
+    if (
+      email !== "" &&
+      password !== "" &&
+      firstName !== "" &&
+      lastName !== ""
+    ) {
       setIsLoading(true);
-      console.log("submit");
+      registerUser({ firstName, lastName, email, password });
     }
   };
 
@@ -68,7 +76,7 @@ const Register = () => {
   };
 
   const handleLastNameBlur = (e) => {
-    if (lastName == "") setLastNameError(true);
+    if (lastName === "") setLastNameError(true);
   };
 
   const handleEmailBlur = (e) => {
@@ -76,7 +84,7 @@ const Register = () => {
   };
 
   const handlePasswordBlur = (e) => {
-    if (password == "") setPasswordError(true);
+    if (password === "") setPasswordError(true);
   };
 
   return (

@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ColorModeContext } from "../context/ThemeContext";
+import { ColorModeContext } from "../context/theme-context";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
@@ -23,13 +23,14 @@ const ColorModeToggler = () => {
   return (
     <Box
       position="absolute"
-      top="16px"
+      top={{ xs: "16px", sm: "24px", md: "24px", lg: "24px", xl: "24px" }}
       right={{ xs: "16px", sm: "24px", md: "24px", lg: "24px", xl: "24px" }}
     >
       <ToggleButtonGroup
         value={currentColorMode}
         exclusive
         onChange={handleColorModeChange}
+        size="small"
         aria-label="color mode"
       >
         <ToggleButton value="light" aria-label="light mode">
@@ -41,7 +42,7 @@ const ColorModeToggler = () => {
           <DarkModeIcon
             sx={{
               ml: 1,
-              color: theme.palette.mode == "light" ? "black" : "white",
+              color: theme.palette.mode === "light" ? "black" : "white",
             }}
           />
         </ToggleButton>
