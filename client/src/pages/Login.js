@@ -1,6 +1,7 @@
+import { useState, useContext, useEffect } from "react";
+import { UserContext } from "../context/user-context";
 import ColorModeToggler from "../components/ColorModeToggler";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LinkMUI from "@mui/material/Link";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -18,6 +19,17 @@ const Login = () => {
   const [passwordError, setPasswordError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const { user, loginUser } = useContext(UserContext);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user) {
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    }
+  }, [user, navigate]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email === "") {
@@ -28,7 +40,8 @@ const Login = () => {
     }
     if (email !== "" && password !== "") {
       setIsLoading(true);
-      console.log("submit");
+      const user = { email, password };
+      loginUser(user);
     }
   };
 

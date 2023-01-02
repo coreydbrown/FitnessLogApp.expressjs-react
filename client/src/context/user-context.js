@@ -36,8 +36,20 @@ const UserContextProvider = ({ children }) => {
     }
   };
 
+  const loginUser = async (currentUser) => {
+    try {
+      const response = await axios.post("/auth/login", currentUser);
+      console.log(response.data);
+      const { user, token } = response.data;
+      setState({ user, token });
+      addUserToLocalStorage({ user, token });
+    } catch (error) {
+      console.log(error.response.data.msg);
+    }
+  };
+
   return (
-    <UserContext.Provider value={{ ...state, registerUser }}>
+    <UserContext.Provider value={{ ...state, registerUser, loginUser }}>
       {children}
     </UserContext.Provider>
   );
