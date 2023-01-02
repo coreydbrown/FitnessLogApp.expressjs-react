@@ -1,4 +1,4 @@
-import PageNotFoundSVG from "../svg-components/PageNotFoundSVG";
+import PageNotFoundSVG from "../components/svg-components/PageNotFoundSVG";
 import { Link } from "react-router-dom";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";

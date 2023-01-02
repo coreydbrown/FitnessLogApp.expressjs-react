@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -16,7 +17,6 @@ import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import StackedLineChart from "@mui/icons-material/StackedLineChart";
 
 const drawerWidth = 240;
 
@@ -31,10 +31,9 @@ function NavDrawer(props) {
   const drawer = (
     <div>
       <Toolbar />
-      <Divider />
       <List>
         <ListItem key="link1" disablePadding>
-          <ListItemButton>
+          <ListItemButton component={Link} to="/stats">
             <ListItemIcon>
               <StackedLineChartIcon />
             </ListItemIcon>
@@ -42,7 +41,7 @@ function NavDrawer(props) {
           </ListItemButton>
         </ListItem>
         <ListItem key="link2" disablePadding>
-          <ListItemButton>
+          <ListItemButton component={Link} to="/workouts">
             <ListItemIcon>
               <FitnessCenterIcon />
             </ListItemIcon>
@@ -50,15 +49,15 @@ function NavDrawer(props) {
           </ListItemButton>
         </ListItem>
         <ListItem key="link3" disablePadding>
-          <ListItemButton>
+          <ListItemButton component={Link} to="/crews">
             <ListItemIcon>
               <GroupsIcon />
             </ListItemIcon>
-            <ListItemText primary="Fit Crews" />
+            <ListItemText primary="My Crews" />
           </ListItemButton>
         </ListItem>
         <ListItem key="link4" disablePadding>
-          <ListItemButton>
+          <ListItemButton component={Link} to="/leaderboard">
             <ListItemIcon>
               <EmojiEventsIcon />
             </ListItemIcon>

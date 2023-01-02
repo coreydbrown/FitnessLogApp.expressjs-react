@@ -1,4 +1,4 @@
-import ActivityTrackerSVG from "../svg-components/ActivityTrackerSVG";
+import ActivityTrackerSVG from "../components/svg-components/ActivityTrackerSVG";
 import ColorModeToggler from "../components/ColorModeToggler";
 import { Link } from "react-router-dom";
 import LinkMUI from "@mui/material/Link";
