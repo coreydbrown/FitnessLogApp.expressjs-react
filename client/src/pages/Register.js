@@ -99,7 +99,7 @@ const Register = () => {
 
   return (
     <Container maxWidth="xl" sx={{ position: "relative" }}>
-      <ColorModeToggler />
+      <ColorModeToggler isInNav={false} />
       <Box
         height="100Vh"
         display="flex"

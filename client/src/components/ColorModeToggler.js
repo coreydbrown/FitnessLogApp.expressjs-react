@@ -7,7 +7,7 @@ import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import LightModeIcon from "@mui/icons-material/LightMode";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 
-const ColorModeToggler = () => {
+const ColorModeToggler = ({ isInNav }) => {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
 
@@ -22,7 +22,7 @@ const ColorModeToggler = () => {
 
   return (
     <Box
-      position="absolute"
+      position={isInNav ? "static" : "absolute"}
       top={{ xs: "16px", sm: "24px", md: "24px", lg: "24px", xl: "24px" }}
       right={{ xs: "16px", sm: "24px", md: "24px", lg: "24px", xl: "24px" }}
     >

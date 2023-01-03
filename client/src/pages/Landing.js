@@ -10,7 +10,7 @@ import Button from "@mui/material/Button";
 const Landing = () => {
   return (
     <Container maxWidth="xl" sx={{ position: "relative" }}>
-      <ColorModeToggler />
+      <ColorModeToggler isInNav={false} />
       <Box
         display="flex"
         height="100Vh"

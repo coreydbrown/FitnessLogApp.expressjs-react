@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../context/user-context";
 import { Link } from "react-router-dom";
+import ColorModeToggler from "../ColorModeToggler";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -19,11 +20,13 @@ import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import Avatar from "@mui/material/Avatar";
 
 const drawerWidth = 240;
 
 function NavDrawer(props) {
-  const { logoutUser } = useContext(UserContext);
+  const { user, logoutUser } = useContext(UserContext);
+  const userInitials = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`;
 
   const handleLogout = (e) => {
     logoutUser();
@@ -39,6 +42,24 @@ function NavDrawer(props) {
   const drawer = (
     <div>
       <Toolbar />
+      <List>
+        <ListItem key="avatar" sx={{ justifyContent: "center" }}>
+          <Avatar
+            sx={{
+              bgcolor: "#ff7e82",
+              width: "4rem",
+              height: "4rem",
+              fontSize: "30px",
+            }}
+          >
+            {userInitials}
+          </Avatar>
+        </ListItem>
+        <ListItem key="welcome-text" sx={{ justifyContent: "center" }}>
+          <Typography>{`Hello, ${user.firstName}!`}</Typography>
+        </ListItem>
+      </List>
+      <Divider />
       <List>
         <ListItem key="link1" disablePadding>
           <ListItemButton component={Link} to="/stats">
@@ -75,7 +96,7 @@ function NavDrawer(props) {
       </List>
       <Divider />
       <List>
-        <ListItem sx={{ justifyContent: "center" }}>
+        <ListItem key="sign-out-button" sx={{ justifyContent: "center" }}>
           <Button
             onClick={handleLogout}
             variant="outlined"
@@ -83,6 +104,9 @@ function NavDrawer(props) {
           >
             Sign out
           </Button>
+        </ListItem>
+        <ListItem key="color-mode-toggler" sx={{ justifyContent: "center" }}>
+          <ColorModeToggler isInNav={true} />
         </ListItem>
       </List>
     </div>
