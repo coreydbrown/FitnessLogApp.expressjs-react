@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../context/user-context";
 import { Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -17,10 +18,17 @@ import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 const drawerWidth = 240;
 
 function NavDrawer(props) {
+  const { logoutUser } = useContext(UserContext);
+
+  const handleLogout = (e) => {
+    logoutUser();
+  };
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -66,6 +74,17 @@ function NavDrawer(props) {
         </ListItem>
       </List>
       <Divider />
+      <List>
+        <ListItem sx={{ justifyContent: "center" }}>
+          <Button
+            onClick={handleLogout}
+            variant="outlined"
+            sx={{ display: { xs: "inline-block", sm: "none" } }}
+          >
+            Sign out
+          </Button>
+        </ListItem>
+      </List>
     </div>
   );
 
@@ -78,7 +97,7 @@ function NavDrawer(props) {
         position="fixed"
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: { xs: "normal", sm: "space-between" } }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -91,6 +110,13 @@ function NavDrawer(props) {
           <Typography variant="h6" noWrap component="div">
             Fit Crew Connect
           </Typography>
+          <Button
+            onClick={handleLogout}
+            variant="outlined"
+            sx={{ display: { xs: "none", sm: "inline-flex" } }}
+          >
+            Sign out
+          </Button>
         </Toolbar>
       </AppBar>
       <Box

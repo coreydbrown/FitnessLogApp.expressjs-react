@@ -48,8 +48,15 @@ const UserContextProvider = ({ children }) => {
     }
   };
 
+  const logoutUser = () => {
+    setState({ user: null, token: null });
+    removeUserFromLocalStorage();
+  };
+
   return (
-    <UserContext.Provider value={{ ...state, registerUser, loginUser }}>
+    <UserContext.Provider
+      value={{ ...state, registerUser, loginUser, logoutUser }}
+    >
       {children}
     </UserContext.Provider>
   );
