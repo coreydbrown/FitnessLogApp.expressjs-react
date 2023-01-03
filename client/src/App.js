@@ -1,3 +1,4 @@
+import ProtectedRoute from "./components/ProtectedRoute";
 import AppLayout from "./components/layout/AppLayout";
 import Stats from "./pages/main/Stats";
 import Workouts from "./pages/main/Workouts";
@@ -13,7 +14,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AppLayout />}>
+        <Route
+          path="/"
+          element={
+            <ProtectedRoute>
+              <AppLayout />
+            </ProtectedRoute>
+          }
+        >
           <Route index element={<Stats />} />
           <Route path="stats" element={<Stats />} />
           <Route path="workouts" element={<Workouts />} />
