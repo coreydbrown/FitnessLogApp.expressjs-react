@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext, useReducer } from "react";
+import reducer from "./reducer";
 import axios from "axios";
 
 const user = localStorage.getItem("user");
@@ -7,47 +8,37 @@ const token = localStorage.getItem("token");
 const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token ? token : null,
-  emailAlreadyRegistered: null,
-  invalidCredentials: null,
+  emailAlreadyRegistered: false,
+  invalidCredentials: false,
 };
 
 export const UserContext = createContext(initialState);
 
+const addUserToLocalStorage = ({ user, token }) => {
+  localStorage.setItem("user", JSON.stringify(user));
+  localStorage.setItem("token", token);
+};
+
+const removeUserFromLocalStorage = () => {
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+};
+
 const UserContextProvider = ({ children }) => {
-  const [state, setState] = useState(initialState);
-
-  const addUserToLocalStorage = ({ user, token }) => {
-    localStorage.setItem("user", JSON.stringify(user));
-    localStorage.setItem("token", token);
-  };
-
-  const removeUserFromLocalStorage = () => {
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
-  };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const registerUser = async (newUser) => {
     try {
       const response = await axios.post("/auth/register", newUser);
       console.log(response.data);
       const { user, token } = response.data;
-      setState({
-        user,
-        token,
-        emailAlreadyRegistered: false,
-        invalidCredentials: false,
-      });
+      dispatch({ type: "register_success", payload: { user, token } });
       addUserToLocalStorage({ user, token });
       return true;
     } catch (error) {
       console.log(error.response.data.msg);
       if (error.response.data.msg === "Email already exists") {
-        setState({
-          user: null,
-          token: null,
-          emailAlreadyRegistered: true,
-          invalidCredentials: false,
-        });
+        dispatch({ type: "email_already_exists" });
       }
       return false;
     }
@@ -58,30 +49,20 @@ const UserContextProvider = ({ children }) => {
       const response = await axios.post("/auth/login", currentUser);
       console.log(response.data);
       const { user, token } = response.data;
-      setState({
-        user,
-        token,
-        emailAlreadyRegistered: false,
-        invalidCredentials: false,
-      });
+      dispatch({ type: "login_success", payload: { user, token } });
       addUserToLocalStorage({ user, token });
       return true;
     } catch (error) {
       console.log(error.response.data.msg);
       if (error.response.data.msg === "Invalid credentials") {
-        setState({
-          user,
-          token,
-          emailAlreadyRegistered: false,
-          invalidCredentials: true,
-        });
+        dispatch({ type: "invalid_credentials" });
       }
       return false;
     }
   };
 
   const logoutUser = () => {
-    setState({ user: null, token: null });
+    dispatch({ type: "logout" });
     removeUserFromLocalStorage();
   };
 
