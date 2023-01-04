@@ -14,12 +14,14 @@ import LoginIcon from "@mui/icons-material/Login";
 
 const Login = () => {
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState({ err: false, msg: "" });
+
   const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+  const [passwordError, setPasswordError] = useState({ err: false, msg: "" });
+
   const [isLoading, setIsLoading] = useState(false);
 
-  const { user, loginUser } = useContext(UserContext);
+  const { user, loginUser, invalidCredentials } = useContext(UserContext);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -33,34 +35,44 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (email === "") {
-      setEmailError(true);
+      setEmailError({ err: true, msg: "Please enter a valid email address" });
     }
     if (password === "") {
-      setPasswordError(true);
+      setPasswordError({ err: true, msg: "Please enter a valid password" });
     }
     if (email !== "" && password !== "") {
       setIsLoading(true);
       const user = { email, password };
-      loginUser(user);
+
+      (async () => {
+        const success = await loginUser(user);
+        if (!success) setIsLoading(false);
+      })();
     }
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    e.target.value === "" ? setEmailError(true) : setEmailError(false);
+    e.target.value === ""
+      ? setEmailError({ err: true, msg: "Please enter a valid email address" })
+      : setEmailError({ err: false, msg: "" });
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    e.target.value === "" ? setPasswordError(true) : setPasswordError(false);
+    e.target.value === ""
+      ? setPasswordError({ err: true, msg: "Please enter a valid password" })
+      : setPasswordError({ err: false, msg: "" });
   };
 
   const handleEmailBlur = (e) => {
-    if (email === "") setEmailError(true);
+    if (email === "")
+      setEmailError({ err: true, msg: "Please enter a valid email address" });
   };
 
   const handlePasswordBlur = (e) => {
-    if (password === "") setPasswordError(true);
+    if (password === "")
+      setPasswordError({ err: true, msg: "Please enter a valid password" });
   };
 
   return (
@@ -89,9 +101,9 @@ const Login = () => {
               <TextField
                 onChange={handleEmailChange}
                 onBlur={handleEmailBlur}
-                error={emailError}
+                error={emailError.err || invalidCredentials}
                 helperText={
-                  emailError ? "Please enter a valid email address" : ""
+                  invalidCredentials ? "Invalid credentials" : emailError.msg
                 }
                 margin="normal"
                 required
@@ -105,9 +117,9 @@ const Login = () => {
               <TextField
                 onChange={handlePasswordChange}
                 onBlur={handlePasswordBlur}
-                error={passwordError}
+                error={passwordError.err || invalidCredentials}
                 helperText={
-                  passwordError ? "Please enter a valid password" : ""
+                  invalidCredentials ? "Invalid credentials" : passwordError.msg
                 }
                 margin="normal"
                 required

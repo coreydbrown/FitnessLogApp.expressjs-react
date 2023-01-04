@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../context/user-context";
+import validator from "validator";
 import ColorModeToggler from "../components/ColorModeToggler";
 import { Link, useNavigate } from "react-router-dom";
 import LinkMUI from "@mui/material/Link";
@@ -15,16 +16,21 @@ import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 
 const Register = () => {
   const [firstName, setFirstName] = useState("");
+  const [firstNameError, setFirstNameError] = useState({ err: false, msg: "" });
+
   const [lastName, setLastName] = useState("");
+  const [lastNameError, setLastNameError] = useState({ err: false, msg: "" });
+
   const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState({ err: false, msg: "" });
+
   const [password, setPassword] = useState("");
-  const [firstNameError, setFirstNameError] = useState(false);
-  const [lastNameError, setLastNameError] = useState(false);
-  const [emailError, setEmailError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+  const [passwordError, setPasswordError] = useState({ err: false, msg: "" });
+
   const [isLoading, setIsLoading] = useState(false);
 
-  const { user, registerUser } = useContext(UserContext);
+  const { user, registerUser, emailAlreadyRegistered } =
+    useContext(UserContext);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -37,17 +43,38 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (email === "") {
-      setEmailError(true);
-    }
-    if (password === "") {
-      setPasswordError(true);
-    }
     if (firstName === "") {
-      setFirstNameError(true);
+      setFirstNameError({ err: true, msg: "Please enter your first name" });
     }
     if (lastName === "") {
-      setLastNameError(true);
+      setLastNameError({ err: true, msg: "Please enter your last name" });
+    }
+    if (email === "") {
+      setEmailError({ err: true, msg: "Please enter a valid email address" });
+    }
+    if (password === "") {
+      setPasswordError({ err: true, msg: "Please enter a valid password" });
+    }
+    if (!validator.isEmail(email)) {
+      setEmailError({
+        err: true,
+        msg: "Please enter a valid email address",
+      });
+      return;
+    }
+    if (password.length < 8 && password !== "") {
+      setPasswordError({
+        err: true,
+        msg: "Password must contain at least 8 characters",
+      });
+      return;
+    }
+    if (password.length > 30 && password !== "") {
+      setPasswordError({
+        err: true,
+        msg: "Password must contain 30 characters or less",
+      });
+      return;
     }
     if (
       email !== "" &&
@@ -56,45 +83,70 @@ const Register = () => {
       lastName !== ""
     ) {
       setIsLoading(true);
-      const user = { firstName, lastName, email, password };
-      registerUser(user);
+      const firstNameCap =
+        firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+      const lastNameCap =
+        lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();
+      const user = {
+        firstName: firstNameCap,
+        lastName: lastNameCap,
+        email,
+        password,
+      };
+
+      (async () => {
+        const success = await registerUser(user);
+        if (!success) setIsLoading(false);
+      })();
     }
   };
 
   const handleFirstNameChange = (e) => {
     setFirstName(e.target.value);
-    e.target.value === "" ? setFirstNameError(true) : setFirstNameError(false);
+    e.target.value === ""
+      ? setFirstNameError({ err: true, msg: "Please enter your first name" })
+      : setFirstNameError({ err: false, msg: "" });
   };
 
   const handleLastNameChange = (e) => {
     setLastName(e.target.value);
-    e.target.value === "" ? setLastNameError(true) : setLastNameError(false);
+    e.target.value === ""
+      ? setLastNameError({ err: true, msg: "Please enter your last name" })
+      : setLastNameError({ err: false, msg: "" });
   };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
-    e.target.value === "" ? setEmailError(true) : setEmailError(false);
+    e.target.value === ""
+      ? setEmailError({ err: true, msg: "Please enter a valid email address" })
+      : setEmailError({ err: false, msg: "" });
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
-    e.target.value === "" ? setPasswordError(true) : setPasswordError(false);
+    e.target.value === ""
+      ? setPasswordError({ err: true, msg: "Please enter a valid password" })
+      : setPasswordError({ err: false, msg: "" });
   };
 
   const handleFirstNameBlur = (e) => {
-    if (firstName === "") setFirstNameError(true);
+    if (firstName === "")
+      setFirstNameError({ err: true, msg: "Please enter your first name" });
   };
 
   const handleLastNameBlur = (e) => {
-    if (lastName === "") setLastNameError(true);
+    if (lastName === "")
+      setLastNameError({ err: true, msg: "Please enter your last name" });
   };
 
   const handleEmailBlur = (e) => {
-    if (email === "") setEmailError(true);
+    if (email === "")
+      setEmailError({ err: true, msg: "Please enter a valid email address" });
   };
 
   const handlePasswordBlur = (e) => {
-    if (password === "") setPasswordError(true);
+    if (password === "")
+      setPasswordError({ err: true, msg: "Please enter a valid password" });
   };
 
   return (
@@ -125,10 +177,8 @@ const Register = () => {
                   <TextField
                     onChange={handleFirstNameChange}
                     onBlur={handleFirstNameBlur}
-                    error={firstNameError}
-                    helperText={
-                      firstNameError ? "Please enter your first name" : ""
-                    }
+                    error={firstNameError.err}
+                    helperText={firstNameError.msg}
                     autoComplete="given-name"
                     name="firstName"
                     required
@@ -142,10 +192,8 @@ const Register = () => {
                   <TextField
                     onChange={handleLastNameChange}
                     onBlur={handleLastNameBlur}
-                    error={lastNameError}
-                    helperText={
-                      lastNameError ? "Please enter your last name" : ""
-                    }
+                    error={lastNameError.err}
+                    helperText={lastNameError.msg}
                     required
                     fullWidth
                     id="lastName"
@@ -158,9 +206,11 @@ const Register = () => {
                   <TextField
                     onChange={handleEmailChange}
                     onBlur={handleEmailBlur}
-                    error={emailError}
+                    error={emailError.err || emailAlreadyRegistered}
                     helperText={
-                      emailError ? "Please enter a valid email address" : ""
+                      emailAlreadyRegistered
+                        ? "This email address already has an account"
+                        : emailError.msg
                     }
                     required
                     fullWidth
@@ -174,10 +224,8 @@ const Register = () => {
                   <TextField
                     onChange={handlePasswordChange}
                     onBlur={handlePasswordBlur}
-                    error={passwordError}
-                    helperText={
-                      passwordError ? "Please enter a valid password" : ""
-                    }
+                    error={passwordError.err}
+                    helperText={passwordError.msg}
                     required
                     fullWidth
                     name="password"

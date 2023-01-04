@@ -7,6 +7,8 @@ const token = localStorage.getItem("token");
 const initialState = {
   user: user ? JSON.parse(user) : null,
   token: token ? token : null,
+  emailAlreadyRegistered: null,
+  invalidCredentials: null,
 };
 
 export const UserContext = createContext(initialState);
@@ -29,10 +31,25 @@ const UserContextProvider = ({ children }) => {
       const response = await axios.post("/auth/register", newUser);
       console.log(response.data);
       const { user, token } = response.data;
-      setState({ user, token });
+      setState({
+        user,
+        token,
+        emailAlreadyRegistered: false,
+        invalidCredentials: false,
+      });
       addUserToLocalStorage({ user, token });
+      return true;
     } catch (error) {
       console.log(error.response.data.msg);
+      if (error.response.data.msg === "Email already exists") {
+        setState({
+          user: null,
+          token: null,
+          emailAlreadyRegistered: true,
+          invalidCredentials: false,
+        });
+      }
+      return false;
     }
   };
 
@@ -41,10 +58,25 @@ const UserContextProvider = ({ children }) => {
       const response = await axios.post("/auth/login", currentUser);
       console.log(response.data);
       const { user, token } = response.data;
-      setState({ user, token });
+      setState({
+        user,
+        token,
+        emailAlreadyRegistered: false,
+        invalidCredentials: false,
+      });
       addUserToLocalStorage({ user, token });
+      return true;
     } catch (error) {
       console.log(error.response.data.msg);
+      if (error.response.data.msg === "Invalid credentials") {
+        setState({
+          user,
+          token,
+          emailAlreadyRegistered: false,
+          invalidCredentials: true,
+        });
+      }
+      return false;
     }
   };
 
