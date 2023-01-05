@@ -1,5 +1,5 @@
 import { createContext, useReducer } from "react";
-import reducer from "./reducer";
+import reducer from "./user-reducer";
 import axios from "axios";
 
 const user = localStorage.getItem("user");

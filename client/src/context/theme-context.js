@@ -20,11 +20,12 @@ import {
 const getDesignTokens = (mode) => ({
   typography: {
     fontFamily: `"Montserrat", "Arial", sans-serif`,
-    fontSize: 14,
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
+    h1: { fontFamily: `"Alexandria", sans-serif` },
+    h2: { fontFamily: `"Alexandria", sans-serif` },
+    h3: { fontFamily: `"Alexandria", sans-serif` },
+    h4: { fontFamily: `"Alexandria", sans-serif` },
+    h5: { fontFamily: `"Alexandria", sans-serif` },
+    h6: { fontFamily: `"Alexandria", sans-serif` },
   },
   palette: {
     mode,

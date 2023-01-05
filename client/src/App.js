@@ -1,5 +1,5 @@
-import ProtectedRoute from "./components/ProtectedRoute";
-import AppLayout from "./components/layout/AppLayout";
+import ProtectedRoute from "./layout/ProtectedRoute";
+import AppLayout from "./layout/AppLayout";
 import Stats from "./pages/main/Stats";
 import Workouts from "./pages/main/Workouts";
 import Crews from "./pages/main/Crews";
