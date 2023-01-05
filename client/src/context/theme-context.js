@@ -1,6 +1,21 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import {
+  red,
+  pink,
+  deepPurple,
+  blue,
+  indigo,
+  cyan,
+  teal,
+  green,
+  yellow,
+  amber,
+  deepOrange,
+  grey,
+  blueGrey,
+} from "@mui/material/colors";
 
 const getDesignTokens = (mode) => ({
   typography: {
@@ -22,6 +37,9 @@ const getDesignTokens = (mode) => ({
           secondary: {
             main: "#D2042D",
           },
+          background: {
+            paper: grey[200],
+          },
         }
       : {
           // palette values for dark mode
@@ -30,6 +48,9 @@ const getDesignTokens = (mode) => ({
           },
           secondary: {
             main: "#ff7e82",
+          },
+          background: {
+            paper: grey[900],
           },
         }),
   },

@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../../context/user-context";
 import { Link } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 import ColorModeToggler from "../ColorModeToggler";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,12 +16,14 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import GroupsIcon from "@mui/icons-material/Groups";
 import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
 import Avatar from "@mui/material/Avatar";
+import Chip from "@mui/material/Chip";
 
 const drawerWidth = 240;
 
@@ -28,10 +31,13 @@ function NavDrawer(props) {
   const { user, logoutUser } = useContext(UserContext);
   const userInitials = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`;
 
+  const theme = useTheme();
+
   const handleLogout = (e) => {
     logoutUser();
   };
 
+  // drawer/appbar
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -46,17 +52,21 @@ function NavDrawer(props) {
         <ListItem key="avatar" sx={{ justifyContent: "center" }}>
           <Avatar
             sx={{
-              bgcolor: "#ff7e82",
-              width: "4rem",
-              height: "4rem",
-              fontSize: "30px",
+              bgcolor: theme.palette.secondary.main,
+              width: "5rem",
+              height: "5rem",
+              fontSize: "2.75rem",
             }}
           >
             {userInitials}
           </Avatar>
         </ListItem>
-        <ListItem key="welcome-text" sx={{ justifyContent: "center" }}>
-          <Typography>{`Hello, ${user.firstName}!`}</Typography>
+        <ListItem key="welcome-text" sx={{ justifyContent: "center", mb: 3 }}>
+          <Typography
+            component="h3"
+            variant="h5"
+            align="center"
+          >{`${user.firstName} ${user.lastName}`}</Typography>
         </ListItem>
       </List>
       <Divider />
@@ -95,20 +105,6 @@ function NavDrawer(props) {
         </ListItem>
       </List>
       <Divider />
-      <List>
-        <ListItem key="sign-out-button" sx={{ justifyContent: "center" }}>
-          <Button
-            onClick={handleLogout}
-            variant="outlined"
-            sx={{ display: { xs: "inline-block", sm: "none" } }}
-          >
-            Sign out
-          </Button>
-        </ListItem>
-        <ListItem key="color-mode-toggler" sx={{ justifyContent: "center" }}>
-          <ColorModeToggler isInNav={true} />
-        </ListItem>
-      </List>
     </div>
   );
 
@@ -119,9 +115,15 @@ function NavDrawer(props) {
     <>
       <AppBar
         position="fixed"
-        sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        sx={{
+          width: { sm: `calc(100% - ${drawerWidth}px)` },
+          ml: { sm: `${drawerWidth}px` },
+          bgcolor: theme.palette.background.default,
+          backgroundImage: "none",
+          boxShadow: "none",
+        }}
       >
-        <Toolbar sx={{ justifyContent: { xs: "normal", sm: "space-between" } }}>
+        <Toolbar sx={{ justifyContent: "space-between" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -131,16 +133,31 @@ function NavDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Fit Crew Connect
-          </Typography>
-          <Button
-            onClick={handleLogout}
-            variant="outlined"
-            sx={{ display: { xs: "none", sm: "inline-flex" } }}
-          >
-            Sign out
-          </Button>
+
+          <Box sx={{ display: { xs: "none", sm: "inline" } }}>
+            <Chip
+              label={new Date().toLocaleDateString("en-us", {
+                weekday: "long",
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+              sx={{
+                bgcolor: theme.palette.background.paper,
+                border: `1px solid ${theme.palette.divider}`,
+              }}
+            />
+          </Box>
+
+          <Box display="flex" alignItems="center">
+            <ColorModeToggler isInNav={true} />
+            <IconButton aria-label="settings" sx={{ marginLeft: 1.5 }}>
+              <SettingsOutlinedIcon />
+            </IconButton>
+            <IconButton aria-label="profile">
+              <PersonOutlineOutlinedIcon />
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
       <Box

@@ -4,8 +4,8 @@ import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import LightModeIcon from "@mui/icons-material/LightMode";
-import DarkModeIcon from "@mui/icons-material/DarkMode";
+import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
+import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 
 const ColorModeToggler = ({ isInNav }) => {
   const theme = useTheme();
@@ -34,17 +34,10 @@ const ColorModeToggler = ({ isInNav }) => {
         aria-label="color mode"
       >
         <ToggleButton value="light" aria-label="light mode">
-          Light
-          <LightModeIcon sx={{ ml: 1, color: "yellow" }} />
+          <LightModeOutlinedIcon sx={{ color: "yellow" }} />
         </ToggleButton>
         <ToggleButton value="dark" aria-label="dark mode">
-          Dark
-          <DarkModeIcon
-            sx={{
-              ml: 1,
-              color: theme.palette.mode === "light" ? "black" : "white",
-            }}
-          />
+          <DarkModeOutlinedIcon sx={{ color: theme.palette.default }} />
         </ToggleButton>
       </ToggleButtonGroup>
     </Box>

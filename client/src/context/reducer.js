@@ -27,7 +27,6 @@ const reducer = (state, action) => {
         emailAlreadyRegistered: true,
       };
     case "invalid_credentials":
-      console.log("went through");
       return {
         ...state,
         invalidCredentials: true,
