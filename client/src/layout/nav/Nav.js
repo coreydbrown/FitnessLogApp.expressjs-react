@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
 import Sidebar from "./Sidebar";
 import TopbarIconGroup from "./TopbarIconGroup";
 import { useTheme } from "@mui/material/styles";

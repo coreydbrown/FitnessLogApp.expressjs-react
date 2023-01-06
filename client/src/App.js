@@ -1,9 +1,9 @@
 import ProtectedRoute from "./layout/ProtectedRoute";
 import AppLayout from "./layout/AppLayout";
-import Stats from "./pages/main/Stats";
+import Dashboard from "./pages/main/Dashboard";
 import Workouts from "./pages/main/Workouts";
-import Crews from "./pages/main/Crews";
-import Leaderboard from "./pages/main/Leaderboard";
+import Weight from "./pages/main/Weight";
+import Records from "./pages/main/Records";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -22,11 +22,11 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index element={<Stats />} />
-          <Route path="stats" element={<Stats />} />
+          <Route index element={<Dashboard />} />
+          <Route path="dashboard" element={<Dashboard />} />
           <Route path="workouts" element={<Workouts />} />
-          <Route path="crews" element={<Crews />} />
-          <Route path="leaderboard" element={<Leaderboard />} />
+          <Route path="weight" element={<Weight />} />
+          <Route path="records" element={<Records />} />
         </Route>
         <Route path="/landing" element={<Landing />} />
         <Route path="/login" element={<Login />} />

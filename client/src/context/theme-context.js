@@ -39,7 +39,7 @@ const getDesignTokens = (mode) => ({
             main: "#D2042D",
           },
           background: {
-            paper: grey[200],
+            paper: grey[100],
           },
         }
       : {

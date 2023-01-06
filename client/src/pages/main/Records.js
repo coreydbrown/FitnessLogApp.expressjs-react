@@ -1,11 +1,11 @@
 import Typography from "@mui/material/Typography";
 
-const Stats = () => {
+const Records = () => {
   return (
     <>
-      <Typography>Stats</Typography>
+      <Typography>Records</Typography>
     </>
   );
 };
 
-export default Stats;
+export default Records;

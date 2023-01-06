@@ -8,10 +8,10 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import GroupsIcon from "@mui/icons-material/Groups";
-import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
-import StackedLineChartIcon from "@mui/icons-material/StackedLineChart";
-import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenter";
+import MonitorWeightOutlinedIcon from "@mui/icons-material/MonitorWeightOutlined";
+import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
@@ -49,35 +49,35 @@ const Sidebar = () => {
       <Divider />
       <List>
         <ListItem key="link1" disablePadding>
-          <ListItemButton component={Link} to="/stats">
+          <ListItemButton component={Link} to="/dashboard">
             <ListItemIcon>
-              <StackedLineChartIcon />
+              <HomeOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Stats" />
+            <ListItemText primary="Dashboard" />
           </ListItemButton>
         </ListItem>
         <ListItem key="link2" disablePadding>
           <ListItemButton component={Link} to="/workouts">
             <ListItemIcon>
-              <FitnessCenterIcon />
+              <FitnessCenterOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="My Workouts" />
+            <ListItemText primary="Workouts" />
           </ListItemButton>
         </ListItem>
         <ListItem key="link3" disablePadding>
-          <ListItemButton component={Link} to="/crews">
+          <ListItemButton component={Link} to="/weight">
             <ListItemIcon>
-              <GroupsIcon />
+              <MonitorWeightOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="My Crews" />
+            <ListItemText primary="Weight" />
           </ListItemButton>
         </ListItem>
         <ListItem key="link4" disablePadding>
-          <ListItemButton component={Link} to="/leaderboard">
+          <ListItemButton component={Link} to="/records">
             <ListItemIcon>
-              <EmojiEventsIcon />
+              <EmojiEventsOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Leaderboard" />
+            <ListItemText primary="Records" />
           </ListItemButton>
         </ListItem>
       </List>
