@@ -14,6 +14,7 @@ import workoutsRoutes from "./routes/workoutsRoutes.js";
 // middleware
 import notFoundMiddleware from "./middleware/not-found.js";
 import errorHandlerMiddleware from "./middleware/error-handler.js";
+import authenticateUser from "./middleware/authenticate.js";
 
 app.use(express.json());
 
@@ -22,7 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/auth", authRoutes);
-app.use("/workouts", workoutsRoutes);
+app.use("/workouts", authenticateUser, workoutsRoutes);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
