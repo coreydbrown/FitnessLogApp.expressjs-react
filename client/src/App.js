@@ -2,7 +2,7 @@ import ProtectedRoute from "./layout/ProtectedRoute";
 import AppLayout from "./layout/AppLayout";
 import Dashboard from "./pages/main/Dashboard";
 import Workouts from "./pages/main/Workouts";
-import Weight from "./pages/main/Weight";
+import Weight from "./pages/main/weight";
 import Records from "./pages/main/Records";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";

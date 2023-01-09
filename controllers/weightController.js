@@ -15,7 +15,8 @@ const createWeight = async (req, res) => {
 };
 
 const getAllWeights = async (req, res) => {
-  res.send("get all weights");
+  const weights = await Weight.find({ createdBy: req.user.userId });
+  res.status(StatusCodes.OK).json({ weights });
 };
 
 export { createWeight, getAllWeights };
