@@ -1,4 +1,3 @@
-import { getAllWeights } from "../../../services/weights";
 import moment from "moment";
 import { useTheme } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -9,31 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
-// const rows = [
-//   { date: "11/16/22", weight: 142.6 },
-//   { date: "11/17/22", weight: 142.3 },
-//   { date: "11/18/22", weight: 142.8 },
-// ];
-
-let rows = [];
-const getData = async () => {
-  try {
-    const data = await getAllWeights();
-    rows = data.weights;
-    // console.log(weights);
-    // rows = weights.map((weightObj) => {
-    //   return {
-    //     date: weightObj.date,
-    //     weight: weightObj.weight,
-    //   };
-    // });
-  } catch (error) {
-    console.log(error);
-  }
-};
-getData();
-
-const WeightTable = () => {
+const WeightTable = ({ rows }) => {
   const theme = useTheme();
 
   return (

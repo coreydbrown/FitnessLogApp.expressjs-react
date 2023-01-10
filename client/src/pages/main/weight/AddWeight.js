@@ -1,15 +1,22 @@
 import { useState } from "react";
-import { createWeight } from "../../../services/weights";
+import { useDispatch, useSelector } from "react-redux";
+import { addWeight } from "../../../redux/weightsSlice";
+import { resetStatusAdd } from "../../../redux/weightsSlice";
 import validator from "validator";
+
+import CircularProgressButton from "../../../components/CircularProgressButton";
+
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
 
 const AddWeight = () => {
   const [weight, setWeight] = useState("");
+
+  const dispatch = useDispatch();
+  const status = useSelector((state) => state.weights.statusAdd);
+  const error = useSelector((state) => state.weights.errorAdd);
 
   const handleSubmitWeight = (e) => {
     e.preventDefault();
@@ -17,7 +24,11 @@ const AddWeight = () => {
       console.log("error blank");
       return;
     }
-    createWeight({ weight });
+    dispatch(addWeight({ weight })).then(() => {
+      setTimeout(() => {
+        dispatch(resetStatusAdd());
+      }, "3000");
+    });
   };
 
   const handleWeightChange = (e) => {
@@ -47,9 +58,7 @@ const AddWeight = () => {
         }}
         sx={{ width: "120px" }}
       />
-      <IconButton type="submit" aria-label="add weight">
-        <AddCircleOutlinedIcon fontSize="large" />
-      </IconButton>
+      <CircularProgressButton status={status} error={error} />
     </Box>
   );
 };
