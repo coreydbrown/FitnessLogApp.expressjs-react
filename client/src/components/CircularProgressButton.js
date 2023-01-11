@@ -1,24 +1,27 @@
+import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
-import { green, red } from "@mui/material/colors";
 import Fab from "@mui/material/Fab";
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
-import HourglassBottomOutlinedIcon from "@mui/icons-material/HourglassBottomOutlined";
 
 const CircularProgressButton = ({ status, error }) => {
+  const theme = useTheme();
+
   const buttonSx = {
     ...(status === "succeeded" && {
-      bgcolor: green[500],
+      bgcolor: theme.palette.success.dark,
+      color: theme.palette.success.contrastText,
       "&:hover": {
-        bgcolor: green[700],
+        bgcolor: theme.palette.success.dark,
       },
     }),
     ...(status === "failed" && {
-      bgcolor: red[500],
+      bgcolor: theme.palette.error.dark,
+      color: theme.palette.error.contrastText,
       "&:hover": {
-        bgcolor: red[700],
+        bgcolor: theme.palette.error.dark,
       },
     }),
   };
@@ -35,7 +38,7 @@ const CircularProgressButton = ({ status, error }) => {
         <CircularProgress
           size={68}
           sx={{
-            color: green[500],
+            color: theme.palette.success.dark,
             position: "absolute",
             top: -6,
             left: -6,

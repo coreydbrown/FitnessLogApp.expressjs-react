@@ -4,34 +4,33 @@ import { fetchWeights } from "../../../redux/weightsSlice";
 
 import AddWeight from "./AddWeight";
 import WeightTable from "./WeightTable";
+import WeightAlerts from "./WeightAlerts";
 
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import LoadingButton from "@mui/lab/LoadingButton";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const Weight = () => {
   const dispatch = useDispatch();
   const weightData = useSelector((state) => state.weights.weights);
-  const status = useSelector((state) => state.weights.statusGetAll);
-  const error = useSelector((state) => state.weights.errorGetAll);
+  const statusGetAll = useSelector((state) => state.weights.statusGetAll);
 
   useEffect(() => {
-    if (status === "idle") {
+    if (statusGetAll === "idle") {
       dispatch(fetchWeights());
     }
-  }, [status, dispatch]);
+  }, [statusGetAll, dispatch]);
 
   return (
     <>
+      <WeightAlerts />
       <Typography component="h2" variant="h4" mb={3}>
         WEIGHT
       </Typography>
       <Box display="flex" flexDirection="column" alignItems="center">
         <AddWeight />
-        {status === "loading" && <CircularProgress />}
-        {status === "failed" && <Typography>{error}</Typography>}
-        {status === "succeeded" && <WeightTable rows={weightData} />}
+        {statusGetAll === "loading" && <CircularProgress />}
+        {statusGetAll === "succeeded" && <WeightTable rows={weightData} />}
       </Box>
     </>
   );

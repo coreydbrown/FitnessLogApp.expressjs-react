@@ -27,7 +27,7 @@ const AddWeight = () => {
     dispatch(addWeight({ weight })).then(() => {
       setTimeout(() => {
         dispatch(resetStatusAdd());
-      }, "3000");
+      }, "5000");
     });
   };
 
@@ -56,7 +56,7 @@ const AddWeight = () => {
         InputLabelProps={{
           shrink: true,
         }}
-        sx={{ width: "120px" }}
+        sx={{ width: "120px", mr: "0.2rem" }}
       />
       <CircularProgressButton status={status} error={error} />
     </Box>
