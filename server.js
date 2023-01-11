@@ -11,6 +11,7 @@ import connectDB from "./db/connect.js";
 import authRoutes from "./routes/authRoutes.js";
 import workoutsRoutes from "./routes/workoutsRoutes.js";
 import weightRoutes from "./routes/weightRoutes.js";
+import notesRoutes from "./routes/notesRoutes.js";
 
 // middleware
 import notFoundMiddleware from "./middleware/not-found.js";
@@ -26,6 +27,7 @@ app.get("/", (req, res) => {
 app.use("/auth", authRoutes);
 app.use("/workouts", authenticateUser, workoutsRoutes);
 app.use("/weight/", authenticateUser, weightRoutes);
+app.use("/notes", authenticateUser, notesRoutes);
 
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
