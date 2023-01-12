@@ -1,7 +1,10 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/user-context";
-import ColorModeToggler from "../components/ColorModeToggler";
 import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import loginSchema from "../validation/login";
+
+import ColorModeToggler from "../components/ColorModeToggler";
 import LinkMUI from "@mui/material/Link";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -13,15 +16,9 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import LoginIcon from "@mui/icons-material/Login";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState({ err: false, msg: "" });
-
-  const [password, setPassword] = useState("");
-  const [passwordError, setPasswordError] = useState({ err: false, msg: "" });
-
   const [isLoading, setIsLoading] = useState(false);
 
-  const { user, loginUser, invalidCredentials } = useContext(UserContext);
+  const { user, loginUser } = useContext(UserContext);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -32,48 +29,18 @@ const Login = () => {
     }
   }, [user, navigate]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (email === "") {
-      setEmailError({ err: true, msg: "Please enter a valid email address" });
-    }
-    if (password === "") {
-      setPasswordError({ err: true, msg: "Please enter a valid password" });
-    }
-    if (email !== "" && password !== "") {
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    validationSchema: loginSchema,
+    onSubmit: async (values) => {
       setIsLoading(true);
-      const user = { email, password };
-
-      (async () => {
-        const success = await loginUser(user);
-        if (!success) setIsLoading(false);
-      })();
-    }
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    e.target.value === ""
-      ? setEmailError({ err: true, msg: "Please enter a valid email address" })
-      : setEmailError({ err: false, msg: "" });
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    e.target.value === ""
-      ? setPasswordError({ err: true, msg: "Please enter a valid password" })
-      : setPasswordError({ err: false, msg: "" });
-  };
-
-  const handleEmailBlur = (e) => {
-    if (email === "")
-      setEmailError({ err: true, msg: "Please enter a valid email address" });
-  };
-
-  const handlePasswordBlur = (e) => {
-    if (password === "")
-      setPasswordError({ err: true, msg: "Please enter a valid password" });
-  };
+      const success = await loginUser(values);
+      if (!success) setIsLoading(false);
+    },
+  });
 
   return (
     <Container maxWidth="xl" sx={{ position: "relative" }}>
@@ -94,41 +61,42 @@ const Login = () => {
             </Typography>
             <Box
               component="form"
-              onSubmit={handleSubmit}
+              onSubmit={formik.handleSubmit}
               noValidate
               sx={{ mt: 1 }}
             >
               <TextField
-                onChange={handleEmailChange}
-                onBlur={handleEmailBlur}
-                error={emailError.err || invalidCredentials}
-                helperText={
-                  invalidCredentials ? "Invalid credentials" : emailError.msg
-                }
-                margin="normal"
-                required
-                fullWidth
                 id="email"
-                label="Email Address"
                 name="email"
-                autoComplete="email"
+                label="Email Address"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+                error={formik.touched.email && formik.errors.email}
+                helperText={
+                  formik.touched.email && formik.errors.email
+                    ? formik.errors.email
+                    : null
+                }
+                fullWidth
+                margin="normal"
                 autoFocus
               />
               <TextField
-                onChange={handlePasswordChange}
-                onBlur={handlePasswordBlur}
-                error={passwordError.err || invalidCredentials}
-                helperText={
-                  invalidCredentials ? "Invalid credentials" : passwordError.msg
-                }
-                margin="normal"
-                required
-                fullWidth
+                id="password"
                 name="password"
                 label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+                error={formik.touched.password && formik.errors.password}
+                helperText={
+                  formik.touched.password && formik.errors.password
+                    ? formik.errors.password
+                    : null
+                }
+                fullWidth
+                margin="normal"
               />
               <LoadingButton
                 type="submit"
