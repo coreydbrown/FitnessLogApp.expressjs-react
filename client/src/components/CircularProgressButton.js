@@ -6,18 +6,18 @@ import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 
-const CircularProgressButton = ({ status, error }) => {
+const CircularProgressButton = ({ isLoading, isSuccess, isError }) => {
   const theme = useTheme();
 
   const buttonSx = {
-    ...(status === "succeeded" && {
+    ...(isSuccess && {
       bgcolor: theme.palette.success.dark,
       color: theme.palette.success.contrastText,
       "&:hover": {
         bgcolor: theme.palette.success.dark,
       },
     }),
-    ...(status === "failed" && {
+    ...(isError && {
       bgcolor: theme.palette.error.dark,
       color: theme.palette.error.contrastText,
       "&:hover": {
@@ -26,15 +26,17 @@ const CircularProgressButton = ({ status, error }) => {
     }),
   };
 
+  let icon = <AddOutlinedIcon fontSize="large" />;
+  if (isLoading) icon = <AddOutlinedIcon fontSize="large" />;
+  if (isSuccess) icon = <CheckOutlinedIcon fontSize="large" />;
+  if (isError) icon = <ErrorOutlineOutlinedIcon fontSize="large" />;
+
   return (
     <Box sx={{ m: 1, position: "relative" }}>
       <Fab type="submit" aria-label="add weight" color="primary" sx={buttonSx}>
-        {status === "idle" && <AddOutlinedIcon fontSize="large" />}
-        {status === "loading" && <AddOutlinedIcon fontSize="large" />}
-        {status === "succeeded" && <CheckOutlinedIcon fontSize="large" />}
-        {status === "failed" && <ErrorOutlineOutlinedIcon fontSize="large" />}
+        {icon}
       </Fab>
-      {status === "loading" && (
+      {isLoading && (
         <CircularProgress
           size={68}
           sx={{

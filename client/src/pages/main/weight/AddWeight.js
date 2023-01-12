@@ -1,10 +1,8 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addWeight } from "../../../redux/weightsSlice";
-import { resetStatusAdd } from "../../../redux/weightsSlice";
+import { useAddWeightMutation } from "../../../services/apiSlice";
 import validator from "validator";
-
 import CircularProgressButton from "../../../components/CircularProgressButton";
+import Alert from "../../../components/Alert";
 
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -12,23 +10,29 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 
 const AddWeight = () => {
+  const [addWeight, { isLoading, error }] = useAddWeightMutation();
+
   const [weight, setWeight] = useState("");
 
-  const dispatch = useDispatch();
-  const status = useSelector((state) => state.weights.statusAdd);
-  const error = useSelector((state) => state.weights.errorAdd);
+  const [showAlert, setShowAlert] = useState(false);
+  const [alertSeverity, setAlertSeverity] = useState("");
 
   const handleSubmitWeight = (e) => {
     e.preventDefault();
     if (!weight || !validator.isNumeric(weight)) {
-      console.log("error blank");
+      console.log("error - please enter values blank");
       return;
     }
-    dispatch(addWeight({ weight })).then(() => {
+    const addWeightWithAlert = async () => {
+      const { error } = await addWeight({ weight });
+      const severity = error ? "error" : "success";
+      setAlertSeverity(severity);
+      setShowAlert(true);
       setTimeout(() => {
-        dispatch(resetStatusAdd());
+        setShowAlert(false);
       }, "5000");
-    });
+    };
+    addWeightWithAlert();
   };
 
   const handleWeightChange = (e) => {
@@ -43,9 +47,12 @@ const AddWeight = () => {
       alignItems="center"
       mb={3}
     >
+      {showAlert && <Alert severity={alertSeverity} error={error} />}
+
       <Typography component="h3" display="inline" mr={1}>
         Add your weight for today
       </Typography>
+
       <TextField
         label="Weight"
         id="weight"
@@ -58,7 +65,12 @@ const AddWeight = () => {
         }}
         sx={{ width: "120px", mr: "0.2rem" }}
       />
-      <CircularProgressButton status={status} error={error} />
+
+      <CircularProgressButton
+        isLoading={isLoading}
+        isSuccess={showAlert && alertSeverity === "success"}
+        isError={showAlert && alertSeverity === "error"}
+      />
     </Box>
   );
 };

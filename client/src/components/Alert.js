@@ -1,14 +1,14 @@
 import Alert from "@mui/material/Alert";
 import Snackbar from "@mui/material/Snackbar";
 
-const SuccessAlert = ({ status }) => {
+const SuccessAlert = ({ severity, error }) => {
   return (
     <Snackbar
-      open={status === "succeeded"}
+      open={true}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
     >
-      <Alert severity="success" variant="filled">
-        Success!
+      <Alert severity={severity} variant="filled">
+        {severity === "success" ? "Success!" : error.data.msg}
       </Alert>
     </Snackbar>
   );
