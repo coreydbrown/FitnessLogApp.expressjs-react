@@ -1,8 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { UserContext } from "../context/user-context";
-import validator from "validator";
-import ColorModeToggler from "../components/ColorModeToggler";
 import { Link, useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import registerSchema from "../validation/register";
+
+import ColorModeToggler from "../components/ColorModeToggler";
 import LinkMUI from "@mui/material/Link";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -15,22 +17,9 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 
 const Register = () => {
-  const [firstName, setFirstName] = useState("");
-  const [firstNameError, setFirstNameError] = useState({ err: false, msg: "" });
-
-  const [lastName, setLastName] = useState("");
-  const [lastNameError, setLastNameError] = useState({ err: false, msg: "" });
-
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState({ err: false, msg: "" });
-
-  const [password, setPassword] = useState("");
-  const [passwordError, setPasswordError] = useState({ err: false, msg: "" });
-
   const [isLoading, setIsLoading] = useState(false);
 
-  const { user, registerUser, emailAlreadyRegistered } =
-    useContext(UserContext);
+  const { user, registerUser } = useContext(UserContext);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -41,113 +30,33 @@ const Register = () => {
     }
   }, [user, navigate]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (firstName === "") {
-      setFirstNameError({ err: true, msg: "Please enter your first name" });
-    }
-    if (lastName === "") {
-      setLastNameError({ err: true, msg: "Please enter your last name" });
-    }
-    if (email === "") {
-      setEmailError({ err: true, msg: "Please enter a valid email address" });
-    }
-    if (password === "") {
-      setPasswordError({ err: true, msg: "Please enter a valid password" });
-    }
-    if (!validator.isEmail(email)) {
-      setEmailError({
-        err: true,
-        msg: "Please enter a valid email address",
-      });
-      return;
-    }
-    if (password.length < 8 && password !== "") {
-      setPasswordError({
-        err: true,
-        msg: "Password must contain at least 8 characters",
-      });
-      return;
-    }
-    if (password.length > 30 && password !== "") {
-      setPasswordError({
-        err: true,
-        msg: "Password must contain 30 characters or less",
-      });
-      return;
-    }
-    if (
-      email !== "" &&
-      password !== "" &&
-      firstName !== "" &&
-      lastName !== ""
-    ) {
+  const formik = useFormik({
+    initialValues: {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+    },
+    validationSchema: registerSchema,
+    onSubmit: async (values) => {
       setIsLoading(true);
+
       const firstNameCap =
-        firstName.charAt(0).toUpperCase() + firstName.slice(1).toLowerCase();
+        values.firstName.charAt(0).toUpperCase() +
+        values.firstName.slice(1).toLowerCase();
       const lastNameCap =
-        lastName.charAt(0).toUpperCase() + lastName.slice(1).toLowerCase();
-      const user = {
+        values.lastName.charAt(0).toUpperCase() +
+        values.lastName.slice(1).toLowerCase();
+
+      const success = await registerUser({
         firstName: firstNameCap,
         lastName: lastNameCap,
-        email,
-        password,
-      };
-
-      (async () => {
-        const success = await registerUser(user);
-        if (!success) setIsLoading(false);
-      })();
-    }
-  };
-
-  const handleFirstNameChange = (e) => {
-    setFirstName(e.target.value);
-    e.target.value === ""
-      ? setFirstNameError({ err: true, msg: "Please enter your first name" })
-      : setFirstNameError({ err: false, msg: "" });
-  };
-
-  const handleLastNameChange = (e) => {
-    setLastName(e.target.value);
-    e.target.value === ""
-      ? setLastNameError({ err: true, msg: "Please enter your last name" })
-      : setLastNameError({ err: false, msg: "" });
-  };
-
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-    e.target.value === ""
-      ? setEmailError({ err: true, msg: "Please enter a valid email address" })
-      : setEmailError({ err: false, msg: "" });
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-    e.target.value === ""
-      ? setPasswordError({ err: true, msg: "Please enter a valid password" })
-      : setPasswordError({ err: false, msg: "" });
-  };
-
-  const handleFirstNameBlur = (e) => {
-    if (firstName === "")
-      setFirstNameError({ err: true, msg: "Please enter your first name" });
-  };
-
-  const handleLastNameBlur = (e) => {
-    if (lastName === "")
-      setLastNameError({ err: true, msg: "Please enter your last name" });
-  };
-
-  const handleEmailBlur = (e) => {
-    if (email === "")
-      setEmailError({ err: true, msg: "Please enter a valid email address" });
-  };
-
-  const handlePasswordBlur = (e) => {
-    if (password === "")
-      setPasswordError({ err: true, msg: "Please enter a valid password" });
-  };
+        email: values.email,
+        password: values.password,
+      });
+      if (!success) setIsLoading(false);
+    },
+  });
 
   return (
     <Container maxWidth="xl" sx={{ position: "relative" }}>
@@ -168,71 +77,82 @@ const Register = () => {
             </Typography>
             <Box
               component="form"
-              onSubmit={handleSubmit}
+              onSubmit={formik.handleSubmit}
               noValidate
               sx={{ mt: 1 }}
             >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    onChange={handleFirstNameChange}
-                    onBlur={handleFirstNameBlur}
-                    error={firstNameError.err}
-                    helperText={firstNameError.msg}
-                    autoComplete="given-name"
-                    name="firstName"
-                    required
-                    fullWidth
                     id="firstName"
+                    name="firstName"
                     label="First Name"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.firstName}
+                    error={formik.touched.firstName && formik.errors.firstName}
+                    helperText={
+                      formik.touched.firstName && formik.errors.firstName
+                        ? formik.errors.firstName
+                        : null
+                    }
+                    fullWidth
+                    margin="normal"
                     autoFocus
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    onChange={handleLastNameChange}
-                    onBlur={handleLastNameBlur}
-                    error={lastNameError.err}
-                    helperText={lastNameError.msg}
-                    required
-                    fullWidth
                     id="lastName"
-                    label="Last Name"
                     name="lastName"
-                    autoComplete="family-name"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    onChange={handleEmailChange}
-                    onBlur={handleEmailBlur}
-                    error={emailError.err || emailAlreadyRegistered}
+                    label="Last Name"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.lastName}
+                    error={formik.touched.lastName && formik.errors.lastName}
                     helperText={
-                      emailAlreadyRegistered
-                        ? "This email address already has an account"
-                        : emailError.msg
+                      formik.touched.lastName && formik.errors.lastName
+                        ? formik.errors.lastName
+                        : null
                     }
-                    required
                     fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
+                    margin="normal"
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    onChange={handlePasswordChange}
-                    onBlur={handlePasswordBlur}
-                    error={passwordError.err}
-                    helperText={passwordError.msg}
-                    required
+                    id="email"
+                    name="email"
+                    label="Email Address"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}
+                    error={formik.touched.email && formik.errors.email}
+                    helperText={
+                      formik.touched.email && formik.errors.email
+                        ? formik.errors.email
+                        : null
+                    }
                     fullWidth
+                    margin="normal"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    id="password"
                     name="password"
                     label="Password"
-                    type="password"
-                    id="password"
-                    autoComplete="new-password"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.password}
+                    error={formik.touched.password && formik.errors.password}
+                    helperText={
+                      formik.touched.password && formik.errors.password
+                        ? formik.errors.password
+                        : null
+                    }
+                    fullWidth
+                    margin="normal"
                   />
                 </Grid>
               </Grid>
