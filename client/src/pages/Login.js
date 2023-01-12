@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../context/user-context";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
-import loginSchema from "../validation/login";
+import loginSchema from "../validation/loginSchema";
 
 import ColorModeToggler from "../components/ColorModeToggler";
 import LinkMUI from "@mui/material/Link";

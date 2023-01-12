@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useAddWeightMutation } from "../../../services/apiSlice";
-import validator from "validator";
+import { useFormik } from "formik";
+import weightSchema from "../../../validation/weightSchema";
+
 import CircularProgressButton from "../../../components/CircularProgressButton";
 import Alert from "../../../components/Alert";
 
@@ -10,39 +12,31 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 
 const AddWeight = () => {
-  const [addWeight, { isLoading, error }] = useAddWeightMutation();
-
-  const [weight, setWeight] = useState("");
-
   const [showAlert, setShowAlert] = useState(false);
   const [alertSeverity, setAlertSeverity] = useState("");
 
-  const handleSubmitWeight = (e) => {
-    e.preventDefault();
-    if (!weight || !validator.isNumeric(weight)) {
-      console.log("error - please enter values blank");
-      return;
-    }
-    const addWeightWithAlert = async () => {
-      const { error } = await addWeight({ weight });
+  const [addWeight, { isLoading, error }] = useAddWeightMutation();
+
+  const formik = useFormik({
+    initialValues: {
+      weight: "",
+    },
+    validationSchema: weightSchema,
+    onSubmit: async (values) => {
+      const { error } = await addWeight(values);
       const severity = error ? "error" : "success";
       setAlertSeverity(severity);
       setShowAlert(true);
       setTimeout(() => {
         setShowAlert(false);
       }, "5000");
-    };
-    addWeightWithAlert();
-  };
-
-  const handleWeightChange = (e) => {
-    setWeight(e.target.value);
-  };
+    },
+  });
 
   return (
     <Box
       component="form"
-      onSubmit={handleSubmitWeight}
+      onSubmit={formik.handleSubmit}
       display="flex"
       alignItems="center"
       mb={3}
@@ -54,9 +48,18 @@ const AddWeight = () => {
       </Typography>
 
       <TextField
-        label="Weight"
         id="weight"
-        onChange={handleWeightChange}
+        name="weight"
+        label="Weight"
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
+        vale={formik.values.weight}
+        error={formik.touched.weight && formik.errors.weight}
+        helperText={
+          formik.touched.weight && formik.errors.weight
+            ? formik.errors.weight
+            : null
+        }
         InputProps={{
           endAdornment: <InputAdornment position="end">lbs</InputAdornment>,
         }}
