@@ -1,13 +1,16 @@
+import NotesList from "./NotesList";
+
 import Typography from "@mui/material/Typography";
 
-const Records = () => {
+const Notes = () => {
   return (
     <>
       <Typography component="h2" variant="h4" mb={3}>
-        RECORDS
+        NOTES
       </Typography>
+      <NotesList />
     </>
   );
 };
 
-export default Records;
+export default Notes;

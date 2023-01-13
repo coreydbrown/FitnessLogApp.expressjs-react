@@ -8,7 +8,12 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 
 const Weight = () => {
-  const { data, isLoading, isSuccess, isError } = useGetAllWeightsQuery();
+  const {
+    data: weights,
+    isLoading,
+    isSuccess,
+    isError,
+  } = useGetAllWeightsQuery();
 
   return (
     <>
@@ -18,7 +23,7 @@ const Weight = () => {
       <Box display="flex" flexDirection="column" alignItems="center">
         <AddWeight />
         {isLoading && <CircularProgress />}
-        {isSuccess && <WeightTable rows={data.weights} />}
+        {isSuccess && <WeightTable rows={weights} />}
       </Box>
     </>
   );

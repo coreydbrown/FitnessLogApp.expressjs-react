@@ -3,6 +3,7 @@ import AppLayout from "./layout/AppLayout";
 import Dashboard from "./pages/main/Dashboard";
 import Workouts from "./pages/main/Workouts";
 import Weight from "./pages/main/weight";
+import Notes from "./pages/main/notes";
 import Records from "./pages/main/Records";
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
@@ -26,6 +27,7 @@ function App() {
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="workouts" element={<Workouts />} />
           <Route path="weight" element={<Weight />} />
+          <Route path="notes" element={<Notes />} />
           <Route path="records" element={<Records />} />
         </Route>
         <Route path="/landing" element={<Landing />} />

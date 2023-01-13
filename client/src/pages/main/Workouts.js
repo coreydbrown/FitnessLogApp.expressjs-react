@@ -3,7 +3,9 @@ import Typography from "@mui/material/Typography";
 const Workouts = () => {
   return (
     <>
-      <Typography>Workouts</Typography>
+      <Typography component="h2" variant="h4" mb={3}>
+        WORKOUTS
+      </Typography>
     </>
   );
 };

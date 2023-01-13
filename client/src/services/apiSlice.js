@@ -12,10 +12,11 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ["weights"],
+  tagTypes: ["weights", "notes"],
   endpoints: (builder) => ({
     getAllWeights: builder.query({
       query: () => "/weight",
+      transformResponse: (resData) => resData.weights,
       providesTags: ["weights"],
     }),
     addWeight: builder.mutation({
@@ -26,7 +27,17 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["weights"],
     }),
+
+    getAllNotes: builder.query({
+      query: () => "/notes",
+      transformResponse: (resData) => resData.notes,
+      providesTags: ["notes"],
+    }),
   }),
 });
 
-export const { useGetAllWeightsQuery, useAddWeightMutation } = apiSlice;
+export const {
+  useGetAllWeightsQuery,
+  useAddWeightMutation,
+  useGetAllNotesQuery,
+} = apiSlice;

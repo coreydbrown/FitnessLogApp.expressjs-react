@@ -6,8 +6,6 @@ import Snackbar from "@mui/material/Snackbar";
 const ApiAlert = () => {
   const status = useSelector((state) => state.alert.alertStatus);
   const message = useSelector((state) => state.alert.alertMessage);
-  console.log(status);
-  console.log(message);
 
   return (
     <Snackbar

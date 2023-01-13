@@ -12,6 +12,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenter";
 import MonitorWeightOutlinedIcon from "@mui/icons-material/MonitorWeightOutlined";
 import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
+import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
@@ -38,6 +39,7 @@ const Sidebar = () => {
             {userInitials}
           </Avatar>
         </ListItem>
+
         <ListItem key="welcome-text" sx={{ justifyContent: "center", mb: 3 }}>
           <Typography
             component="h3"
@@ -56,6 +58,7 @@ const Sidebar = () => {
             <ListItemText primary="Dashboard" />
           </ListItemButton>
         </ListItem>
+
         <ListItem key="link2" disablePadding>
           <ListItemButton component={Link} to="/workouts">
             <ListItemIcon>
@@ -64,6 +67,7 @@ const Sidebar = () => {
             <ListItemText primary="Workouts" />
           </ListItemButton>
         </ListItem>
+
         <ListItem key="link3" disablePadding>
           <ListItemButton component={Link} to="/weight">
             <ListItemIcon>
@@ -72,7 +76,17 @@ const Sidebar = () => {
             <ListItemText primary="Weight" />
           </ListItemButton>
         </ListItem>
+
         <ListItem key="link4" disablePadding>
+          <ListItemButton component={Link} to="/notes">
+            <ListItemIcon>
+              <StickyNote2OutlinedIcon />
+            </ListItemIcon>
+            <ListItemText primary="Notes" />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem key="link5" disablePadding>
           <ListItemButton component={Link} to="/records">
             <ListItemIcon>
               <EmojiEventsOutlinedIcon />

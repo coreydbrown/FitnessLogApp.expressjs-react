@@ -1,8 +1,10 @@
 import { useState } from "react";
-import moment from "moment";
+import { useTheme } from "@mui/material/styles";
+
+import { formatDateLong } from "../../utilities/formatDate";
 import Sidebar from "./Sidebar";
 import TopbarIconGroup from "./TopbarIconGroup";
-import { useTheme } from "@mui/material/styles";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -37,7 +39,7 @@ function Nav(props) {
         <MenuIcon />
       </IconButton>
       <Chip
-        label={moment(new Date()).format("MMMM Do, YYYY")}
+        label={formatDateLong(new Date())}
         sx={{
           display: { xs: "none", sm: "inline-flex" },
           bgcolor: theme.palette.background.paper,

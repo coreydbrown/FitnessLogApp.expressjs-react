@@ -1,5 +1,7 @@
-import moment from "moment";
 import { useTheme } from "@mui/material/styles";
+
+import { formatDateMedium } from "../../../utilities/formatDate";
+
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -57,7 +59,7 @@ const WeightTable = ({ rows }) => {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell align="center" component="th" scope="row">
-                {moment(row.createdAt).format("MMM Do, YYYY")}
+                {formatDateMedium(row.createdAt)}
               </TableCell>
               <TableCell align="center">{row.weight}</TableCell>
             </TableRow>
