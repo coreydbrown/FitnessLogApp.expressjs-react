@@ -1,10 +1,10 @@
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useAddWeightMutation } from "../../../services/apiSlice";
+import launchAlert from "../../../utilities/launchAlert";
 import { useFormik } from "formik";
 import weightSchema from "../../../validation/weightSchema";
 
 import CircularProgressButton from "../../../components/CircularProgressButton";
-import Alert from "../../../components/Alert";
 
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
@@ -12,10 +12,9 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 
 const AddWeight = () => {
-  const [showAlert, setShowAlert] = useState(false);
-  const [alertSeverity, setAlertSeverity] = useState("");
+  const dispatch = useDispatch();
 
-  const [addWeight, { isLoading, error }] = useAddWeightMutation();
+  const [addWeight, { isLoading }] = useAddWeightMutation();
 
   const formik = useFormik({
     initialValues: {
@@ -24,12 +23,7 @@ const AddWeight = () => {
     validationSchema: weightSchema,
     onSubmit: async (values) => {
       const { error } = await addWeight(values);
-      const severity = error ? "error" : "success";
-      setAlertSeverity(severity);
-      setShowAlert(true);
-      setTimeout(() => {
-        setShowAlert(false);
-      }, "5000");
+      launchAlert(dispatch, error);
     },
   });
 
@@ -41,8 +35,6 @@ const AddWeight = () => {
       alignItems="center"
       mb={3}
     >
-      {showAlert && <Alert severity={alertSeverity} error={error} />}
-
       <Typography component="h3" display="inline" mr={1}>
         Add your weight for today
       </Typography>
@@ -69,11 +61,7 @@ const AddWeight = () => {
         sx={{ width: "120px", mr: "0.2rem" }}
       />
 
-      <CircularProgressButton
-        isLoading={isLoading}
-        isSuccess={showAlert && alertSeverity === "success"}
-        isError={showAlert && alertSeverity === "error"}
-      />
+      <CircularProgressButton isLoading={isLoading} />
     </Box>
   );
 };

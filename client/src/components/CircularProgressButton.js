@@ -1,4 +1,6 @@
+import { useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
+
 import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Fab from "@mui/material/Fab";
@@ -6,7 +8,11 @@ import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import ErrorOutlineOutlinedIcon from "@mui/icons-material/ErrorOutlineOutlined";
 
-const CircularProgressButton = ({ isLoading, isSuccess, isError }) => {
+const CircularProgressButton = ({ isLoading }) => {
+  const status = useSelector((state) => state.alert.alertStatus);
+  const isSuccess = status === "success" ? true : false;
+  const isError = status === "error" ? true : false;
+
   const theme = useTheme();
 
   const buttonSx = {
