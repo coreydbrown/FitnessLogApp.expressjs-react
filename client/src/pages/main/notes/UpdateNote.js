@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useTheme } from "@mui/material";
 
-import CreateNoteForm from "./CreateNoteForm";
+import UpdateNoteForm from "./UpdateNoteForm";
 
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
+import IconButton from "@mui/material/IconButton";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import Tooltip from "@mui/material/Tooltip";
 
-const CreateNote = () => {
+const UpdateNote = ({ id, title, content, category }) => {
   const theme = useTheme();
 
   // Open modal functionality
@@ -20,14 +22,12 @@ const CreateNote = () => {
 
   return (
     <>
-      <Button
-        onClick={handleClickOpen}
-        size="large"
-        variant="outlined"
-        sx={{ mb: 3 }}
-      >
-        Create a new note
-      </Button>
+      <Tooltip title="Edit" placement="top">
+        <IconButton onClick={handleClickOpen} aria-label="edit">
+          <EditOutlinedIcon />
+        </IconButton>
+      </Tooltip>
+
       <Dialog
         open={open}
         onClose={handleClose}
@@ -39,10 +39,16 @@ const CreateNote = () => {
           },
         }}
       >
-        <CreateNoteForm handleClose={handleClose} />
+        <UpdateNoteForm
+          id={id}
+          title={title}
+          content={content}
+          category={category}
+          handleClose={handleClose}
+        />
       </Dialog>
     </>
   );
 };
 
-export default CreateNote;
+export default UpdateNote;

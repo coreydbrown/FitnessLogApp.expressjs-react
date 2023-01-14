@@ -1,5 +1,9 @@
 import { formatDateLong } from "../../../utilities/formatDate";
+import { useDispatch } from "react-redux";
 import { useTheme } from "@mui/material";
+import { useDeleteNoteMutation } from "../../../services/apiSlice";
+
+import UpdateNote from "./UpdateNote";
 
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
@@ -8,11 +12,15 @@ import CardActions from "@mui/material/CardActions";
 import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import Tooltip from "@mui/material/Tooltip";
+import launchAlert from "../../../utilities/launchAlert";
 
-const NoteItem = ({ id, title, content, category, createdAt, updatedAt }) => {
+const NoteItem = ({ id, title, content, category, updatedAt }) => {
+  const dispatch = useDispatch();
+
+  const [deleteNote] = useDeleteNoteMutation();
+
   const theme = useTheme();
 
   let noteColor;
@@ -20,6 +28,10 @@ const NoteItem = ({ id, title, content, category, createdAt, updatedAt }) => {
   if (category === "Reminder") noteColor = theme.palette.pink.main;
   if (category === "Workout Thought") noteColor = theme.palette.orange.main;
   if (category === "Other") noteColor = theme.palette.purple.main;
+
+  const handleDelete = () => {
+    deleteNote(id).then(({ error }) => launchAlert(dispatch, error));
+  };
 
   return (
     <Card
@@ -57,16 +69,17 @@ const NoteItem = ({ id, title, content, category, createdAt, updatedAt }) => {
         disableSpacing
         sx={{ display: "flex", justifyContent: "end" }}
       >
-        <Tooltip title="Edit" placement="top">
-          <IconButton aria-label="edit">
-            <EditOutlinedIcon />
-          </IconButton>
-        </Tooltip>
         <Tooltip title="Remove" placement="top">
-          <IconButton aria-label="delete">
+          <IconButton onClick={handleDelete} aria-label="delete">
             <DeleteOutlinedIcon />
           </IconButton>
         </Tooltip>
+        <UpdateNote
+          id={id}
+          title={title}
+          content={content}
+          category={category}
+        />
       </CardActions>
     </Card>
   );

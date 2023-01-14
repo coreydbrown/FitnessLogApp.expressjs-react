@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useCreateNoteMutation } from "../../../services/apiSlice";
+import { useUpdateNoteMutation } from "../../../services/apiSlice";
 import { useFormik } from "formik";
 import noteSchema from "../../../validation/noteSchema";
 import launchAlert from "../../../utilities/launchAlert";
@@ -19,20 +19,20 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
-const CreateNoteForm = ({ handleClose }) => {
+const UpdateNoteForm = ({ id, title, content, category, handleClose }) => {
   const dispatch = useDispatch();
 
-  const [createNote, { isLoading }] = useCreateNoteMutation();
+  const [updateNote, { isLoading }] = useUpdateNoteMutation();
 
   const formik = useFormik({
     initialValues: {
-      title: "",
-      content: "",
-      category: "Goal",
+      title: title,
+      content: content,
+      category: category,
     },
     validationSchema: noteSchema,
     onSubmit: async (values) => {
-      const { error } = await createNote(values);
+      const { error } = await updateNote({ id, ...values });
       launchAlert(dispatch, error);
       handleClose();
     },
@@ -41,7 +41,7 @@ const CreateNoteForm = ({ handleClose }) => {
   return (
     <>
       <Box component="form" onSubmit={formik.handleSubmit}>
-        <DialogTitle>Create a new note</DialogTitle>
+        <DialogTitle>Update note</DialogTitle>
         <DialogContent>
           <TextField
             id="title"
@@ -113,7 +113,7 @@ const CreateNoteForm = ({ handleClose }) => {
             loadingPosition="end"
             variant="contained"
           >
-            Add note
+            Update note
           </LoadingButton>
         </DialogActions>
       </Box>
@@ -121,4 +121,4 @@ const CreateNoteForm = ({ handleClose }) => {
   );
 };
 
-export default CreateNoteForm;
+export default UpdateNoteForm;

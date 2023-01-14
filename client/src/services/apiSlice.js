@@ -41,6 +41,24 @@ export const apiSlice = createApi({
       }),
       invalidatesTags: ["notes"],
     }),
+    deleteNote: builder.mutation({
+      query: (id) => ({
+        url: `/notes/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["notes"],
+    }),
+    updateNote: builder.mutation({
+      query: (data) => {
+        const { id, ...body } = data;
+        return {
+          url: `/notes/${id}`,
+          method: "PATCH",
+          body,
+        };
+      },
+      invalidatesTags: ["notes"],
+    }),
   }),
 });
 
@@ -50,4 +68,6 @@ export const {
 
   useGetAllNotesQuery,
   useCreateNoteMutation,
+  useDeleteNoteMutation,
+  useUpdateNoteMutation,
 } = apiSlice;
