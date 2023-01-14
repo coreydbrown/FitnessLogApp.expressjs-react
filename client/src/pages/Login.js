@@ -78,12 +78,8 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
-                error={formik.touched.email && formik.errors.email}
-                helperText={
-                  formik.touched.email && formik.errors.email
-                    ? formik.errors.email
-                    : null
-                }
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
                 fullWidth
                 margin="normal"
                 autoFocus
@@ -95,12 +91,10 @@ const Login = () => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
-                error={formik.touched.password && formik.errors.password}
-                helperText={
-                  formik.touched.password && formik.errors.password
-                    ? formik.errors.password
-                    : null
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
                 }
+                helperText={formik.touched.password && formik.errors.password}
                 fullWidth
                 margin="normal"
               />

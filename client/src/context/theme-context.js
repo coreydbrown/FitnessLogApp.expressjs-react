@@ -12,7 +12,11 @@ const getDesignTokens = (mode) => ({
     h4: { fontFamily: `"Alexandria", sans-serif` },
     h5: { fontFamily: `"Alexandria", sans-serif` },
     h6: { fontFamily: `"Alexandria", sans-serif` },
+    button: {
+      textTransform: "none",
+    },
   },
+
   palette: {
     mode,
     ...(mode === "light" ? lightModeColors : darkModeColors),

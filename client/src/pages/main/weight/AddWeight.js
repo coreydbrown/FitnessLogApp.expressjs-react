@@ -34,6 +34,7 @@ const AddWeight = () => {
       display="flex"
       alignItems="center"
       mb={3}
+      noValidate
     >
       <Typography component="h3" display="inline" mr={1}>
         Add your weight for today
@@ -46,12 +47,8 @@ const AddWeight = () => {
         onChange={formik.handleChange}
         onBlur={formik.handleBlur}
         vale={formik.values.weight}
-        error={formik.touched.weight && formik.errors.weight}
-        helperText={
-          formik.touched.weight && formik.errors.weight
-            ? formik.errors.weight
-            : null
-        }
+        error={formik.touched.weight && Boolean(formik.errors.weight)}
+        helperText={formik.touched.weight && formik.errors.weight}
         InputProps={{
           endAdornment: <InputAdornment position="end">lbs</InputAdornment>,
         }}

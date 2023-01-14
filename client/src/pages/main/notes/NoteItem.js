@@ -55,7 +55,7 @@ const NoteItem = ({ id, title, content, category, createdAt, updatedAt }) => {
       </CardContent>
       <CardActions
         disableSpacing
-        sx={{ display: "flex", justifyContent: "space-between" }}
+        sx={{ display: "flex", justifyContent: "end" }}
       >
         <Tooltip title="Edit" placement="top">
           <IconButton aria-label="edit">
