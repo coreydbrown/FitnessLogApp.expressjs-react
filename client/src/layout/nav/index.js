@@ -39,7 +39,7 @@ function Nav(props) {
         <MenuIcon />
       </IconButton>
       <Chip
-        label={formatDateLong(new Date())}
+        label={`Today is ${formatDateLong(new Date())}`}
         sx={{
           display: { xs: "none", sm: "inline-flex" },
           bgcolor: theme.palette.background.paper,

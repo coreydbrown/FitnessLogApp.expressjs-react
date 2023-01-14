@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { UserContext } from "../../context/user-context";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
+import randomColorGenerator from "../../utilities/randomColorGenerator";
+
 import Divider from "@mui/material/Divider";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
@@ -30,7 +32,7 @@ const Sidebar = () => {
         <ListItem key="avatar" sx={{ justifyContent: "center" }}>
           <Avatar
             sx={{
-              bgcolor: theme.palette.secondary.main,
+              bgcolor: randomColorGenerator(theme),
               width: "5rem",
               height: "5rem",
               fontSize: "2.75rem",

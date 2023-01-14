@@ -10,16 +10,32 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import Tooltip from "@mui/material/Tooltip";
 
 const NoteItem = ({ id, title, content, category, createdAt, updatedAt }) => {
   const theme = useTheme();
 
+  let noteColor;
+  if (category === "Goal") noteColor = theme.palette.green.main;
+  if (category === "Reminder") noteColor = theme.palette.pink.main;
+  if (category === "Workout Thought") noteColor = theme.palette.orange.main;
+  if (category === "Other") noteColor = theme.palette.purple.main;
+
   return (
-    <Card sx={{ maxWidth: 300 }}>
+    <Card
+      sx={{
+        maxWidth: 300,
+        backgroundImage: "none",
+        border:
+          theme.palette.mode === "dark"
+            ? `1px solid ${theme.palette.divider}`
+            : "none",
+      }}
+    >
       <CardHeader
         avatar={
           <Avatar
-            sx={{ fontSize: "1.5rem", bgcolor: theme.palette.primary.main }}
+            sx={{ fontSize: "1.5rem", bgcolor: noteColor }}
             aria-label="note"
           >
             {category.charAt(0)}
@@ -27,13 +43,13 @@ const NoteItem = ({ id, title, content, category, createdAt, updatedAt }) => {
         }
         title={title}
         subheader={category}
-        subheaderTypographyProps={{ color: theme.palette.primary.main }}
+        subheaderTypographyProps={{ color: noteColor }}
       />
       <CardContent>
         <Typography variant="body2" color="text.secondary">
           {content}
         </Typography>
-        <Typography variant="body2" color="primary" sx={{ mt: 2.5 }}>
+        <Typography variant="body2" color={noteColor} sx={{ mt: 2.5 }}>
           {formatDateLong(updatedAt)}
         </Typography>
       </CardContent>
@@ -41,12 +57,16 @@ const NoteItem = ({ id, title, content, category, createdAt, updatedAt }) => {
         disableSpacing
         sx={{ display: "flex", justifyContent: "space-between" }}
       >
-        <IconButton aria-label="edit">
-          <EditOutlinedIcon />
-        </IconButton>
-        <IconButton aria-label="delete">
-          <DeleteOutlinedIcon />
-        </IconButton>
+        <Tooltip title="Edit" placement="top">
+          <IconButton aria-label="edit">
+            <EditOutlinedIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="Remove" placement="top">
+          <IconButton aria-label="delete">
+            <DeleteOutlinedIcon />
+          </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
   );

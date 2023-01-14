@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import loginSchema from "../validation/loginSchema";
 
 import ColorModeToggler from "../components/ColorModeToggler";
+
 import LinkMUI from "@mui/material/Link";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
@@ -53,7 +54,12 @@ const Login = () => {
       >
         <Card
           component="main"
-          sx={{ minWidth: 275, maxWidth: 350, textAlign: "center" }}
+          sx={{
+            minWidth: 275,
+            maxWidth: 350,
+            textAlign: "center",
+            backgroundImage: "none",
+          }}
         >
           <CardContent>
             <Typography component="h2" variant="h5">
