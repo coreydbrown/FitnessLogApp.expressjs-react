@@ -1,13 +1,9 @@
-import { useGetAllNotesQuery } from "../../../services/apiSlice";
-
 import NoteItem from "./NoteItem";
 
 import Masonry from "@mui/lab/Masonry";
 import Box from "@mui/material/Box";
 
-const NotesList = () => {
-  const { data: notes = [] } = useGetAllNotesQuery();
-
+const NotesList = ({ notes }) => {
   return (
     <Box marginRight={-3}>
       <Masonry

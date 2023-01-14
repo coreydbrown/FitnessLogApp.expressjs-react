@@ -1,7 +1,11 @@
+import { useDispatch } from "react-redux";
+import { useCreateNoteMutation } from "../../../services/apiSlice";
 import { useFormik } from "formik";
 import noteSchema from "../../../validation/noteSchema";
+import launchAlert from "../../../utilities/launchAlert";
 
 import Box from "@mui/material/Box";
+import LoadingButton from "@mui/lab/LoadingButton";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import DialogActions from "@mui/material/DialogActions";
@@ -16,6 +20,10 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 
 const CreateNoteForm = ({ handleClose }) => {
+  const dispatch = useDispatch();
+
+  const [createNote, { isLoading }] = useCreateNoteMutation();
+
   const formik = useFormik({
     initialValues: {
       title: "",
@@ -23,13 +31,13 @@ const CreateNoteForm = ({ handleClose }) => {
       category: "Goal",
     },
     validationSchema: noteSchema,
-    onSubmit: (values) => {
-      //   setIsLoading(true);
-      //   const success = await loginUser(values);
-      //   if (!success) setIsLoading(false);
-      console.log(values);
+    onSubmit: async (values) => {
+      const { error } = await createNote(values);
+      launchAlert(dispatch, error);
+      handleClose();
     },
   });
+  console.log(isLoading);
 
   return (
     <>
@@ -95,17 +103,19 @@ const CreateNoteForm = ({ handleClose }) => {
           <Button
             onClick={handleClose}
             variant="contained"
-            startIcon={<CancelIcon />}
+            endIcon={<CancelIcon />}
           >
             Cancel
           </Button>
-          <Button
+          <LoadingButton
             type="submit"
+            endIcon={<AddCircleIcon />}
+            loading={isLoading}
+            loadingPosition="end"
             variant="contained"
-            startIcon={<AddCircleIcon />}
           >
             Add note
-          </Button>
+          </LoadingButton>
         </DialogActions>
       </Box>
     </>

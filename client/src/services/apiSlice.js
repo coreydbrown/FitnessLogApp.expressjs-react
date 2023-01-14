@@ -33,11 +33,21 @@ export const apiSlice = createApi({
       transformResponse: (resData) => resData.notes,
       providesTags: ["notes"],
     }),
+    createNote: builder.mutation({
+      query: (note) => ({
+        url: "/notes",
+        method: "POST",
+        body: note,
+      }),
+      invalidatesTags: ["notes"],
+    }),
   }),
 });
 
 export const {
   useGetAllWeightsQuery,
   useAddWeightMutation,
+
   useGetAllNotesQuery,
+  useCreateNoteMutation,
 } = apiSlice;
