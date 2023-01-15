@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { ColorModeContext } from "../context/theme-context";
+import { ColorModeContext } from "../context/themeContext";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ToggleButton from "@mui/material/ToggleButton";

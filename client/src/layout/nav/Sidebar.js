@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { UserContext } from "../../context/user-context";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import randomColorGenerator from "../../utilities/randomColorGenerator";
@@ -20,7 +19,7 @@ import Typography from "@mui/material/Typography";
 import Avatar from "@mui/material/Avatar";
 
 const Sidebar = () => {
-  const { user } = useContext(UserContext);
+  const user = useSelector((state) => state.auth.user);
   const userInitials = `${user.firstName.charAt(0)}${user.lastName.charAt(0)}`;
 
   const theme = useTheme();

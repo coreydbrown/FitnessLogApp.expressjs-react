@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { useContext } from "react";
-import { UserContext } from "../../context/user-context";
+import { useDispatch } from "react-redux";
+import { resetCredentials } from "../../app/services/authSlice";
 import ColorModeToggler from "../../components/ColorModeToggler";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
@@ -10,7 +10,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 
 const TopbarIconGroup = () => {
-  const { logoutUser } = useContext(UserContext);
+  const dispatch = useDispatch();
 
   //for profile menu
   const [anchorEl, setAnchorEl] = useState(null);
@@ -23,7 +23,7 @@ const TopbarIconGroup = () => {
   };
 
   const handleLogout = (e) => {
-    logoutUser();
+    dispatch(resetCredentials());
   };
 
   return (

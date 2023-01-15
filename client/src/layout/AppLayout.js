@@ -14,8 +14,8 @@ const AppLayout = () => {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <Nav />
       {showAlert && <ApiAlert />}
+      <Nav />
       <Box
         component="main"
         sx={{

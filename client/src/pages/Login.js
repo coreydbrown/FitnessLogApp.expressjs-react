@@ -1,8 +1,12 @@
-import { useState, useContext, useEffect } from "react";
-import { UserContext } from "../context/user-context";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLoginMutation } from "../app/services/authApi";
+import { setCredentials } from "../app/services/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import loginSchema from "../validation/loginSchema";
+import launchAlert from "../utilities/launchAlert";
+import ApiAlert from "../components/ApiAlert";
 
 import ColorModeToggler from "../components/ColorModeToggler";
 
@@ -17,18 +21,18 @@ import LoadingButton from "@mui/lab/LoadingButton";
 import LoginIcon from "@mui/icons-material/Login";
 
 const Login = () => {
-  const [isLoading, setIsLoading] = useState(false);
+  const dispatch = useDispatch();
+  const [login, { isLoading }] = useLoginMutation();
+  const token = useSelector((state) => state.auth.token);
 
-  const { user, loginUser } = useContext(UserContext);
+  const showAlert = useSelector((state) => state.alert.showAlert);
 
   const navigate = useNavigate();
   useEffect(() => {
-    if (user) {
-      setTimeout(() => {
-        navigate("/");
-      }, 1000);
+    if (token) {
+      navigate("/");
     }
-  }, [user, navigate]);
+  }, [token, navigate]);
 
   const formik = useFormik({
     initialValues: {
@@ -37,89 +41,94 @@ const Login = () => {
     },
     validationSchema: loginSchema,
     onSubmit: async (values) => {
-      setIsLoading(true);
-      const success = await loginUser(values);
-      if (!success) setIsLoading(false);
+      const res = await login(values);
+      const error = res.error;
+      const data = res.data;
+      launchAlert(dispatch, error);
+      if (data) dispatch(setCredentials(data));
     },
   });
 
   return (
-    <Container maxWidth="xl" sx={{ position: "relative" }}>
-      <ColorModeToggler isInNav={false} />
-      <Box
-        height="100Vh"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-      >
-        <Card
-          component="main"
-          sx={{
-            minWidth: 275,
-            maxWidth: 350,
-            textAlign: "center",
-            backgroundImage: "none",
-          }}
+    <>
+      {showAlert && <ApiAlert />}
+      <Container maxWidth="xl" sx={{ position: "relative" }}>
+        <ColorModeToggler isInNav={false} />
+        <Box
+          height="100Vh"
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
         >
-          <CardContent>
-            <Typography component="h2" variant="h5">
-              Sign in
-            </Typography>
-            <Box
-              component="form"
-              onSubmit={formik.handleSubmit}
-              noValidate
-              sx={{ mt: 1 }}
-            >
-              <TextField
-                id="email"
-                name="email"
-                label="Email Address"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.email}
-                error={formik.touched.email && Boolean(formik.errors.email)}
-                helperText={formik.touched.email && formik.errors.email}
-                fullWidth
-                margin="normal"
-                autoFocus
-              />
-              <TextField
-                id="password"
-                name="password"
-                label="Password"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                value={formik.values.password}
-                error={
-                  formik.touched.password && Boolean(formik.errors.password)
-                }
-                helperText={formik.touched.password && formik.errors.password}
-                fullWidth
-                margin="normal"
-              />
-              <LoadingButton
-                type="submit"
-                endIcon={<LoginIcon />}
-                loading={isLoading}
-                loadingPosition="end"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-              >
-                Sign In
-              </LoadingButton>
-              <Typography>
-                Don't have an account?{" "}
-                <LinkMUI component={Link} to="/register">
-                  Sign up
-                </LinkMUI>
+          <Card
+            component="main"
+            sx={{
+              minWidth: 275,
+              maxWidth: 350,
+              textAlign: "center",
+              backgroundImage: "none",
+            }}
+          >
+            <CardContent>
+              <Typography component="h2" variant="h5">
+                Sign in
               </Typography>
-            </Box>
-          </CardContent>
-        </Card>
-      </Box>
-    </Container>
+              <Box
+                component="form"
+                onSubmit={formik.handleSubmit}
+                noValidate
+                sx={{ mt: 1 }}
+              >
+                <TextField
+                  id="email"
+                  name="email"
+                  label="Email Address"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.email}
+                  error={formik.touched.email && Boolean(formik.errors.email)}
+                  helperText={formik.touched.email && formik.errors.email}
+                  fullWidth
+                  margin="normal"
+                  autoFocus
+                />
+                <TextField
+                  id="password"
+                  name="password"
+                  label="Password"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password}
+                  error={
+                    formik.touched.password && Boolean(formik.errors.password)
+                  }
+                  helperText={formik.touched.password && formik.errors.password}
+                  fullWidth
+                  margin="normal"
+                />
+                <LoadingButton
+                  type="submit"
+                  endIcon={<LoginIcon />}
+                  loading={isLoading}
+                  loadingPosition="end"
+                  fullWidth
+                  variant="contained"
+                  sx={{ mt: 3, mb: 2 }}
+                >
+                  Sign In
+                </LoadingButton>
+                <Typography>
+                  Don't have an account?{" "}
+                  <LinkMUI component={Link} to="/register">
+                    Sign up
+                  </LinkMUI>
+                </Typography>
+              </Box>
+            </CardContent>
+          </Card>
+        </Box>
+      </Container>
+    </>
   );
 };
 

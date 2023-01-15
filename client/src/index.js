@@ -5,18 +5,15 @@ import { store } from "./app/store";
 import "normalize.css";
 import "./index.css";
 import App from "./App";
-import ThemeContext from "./context/theme-context";
-import UserContextProvider from "./context/user-context";
+import ThemeContext from "./context/themeContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <UserContextProvider>
-      <ThemeContext>
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </ThemeContext>
-    </UserContextProvider>
+    <ThemeContext>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeContext>
   </React.StrictMode>
 );
