@@ -1,4 +1,4 @@
-import { useGetAllNotesQuery } from "../../../services/apiSlice";
+import { useGetAllNotesQuery } from "../../../app/services/notesApi";
 
 import CreateNote from "./CreateNote";
 import NotesList from "./NotesList";

@@ -1,7 +1,7 @@
 import { formatDateLong } from "../../../utilities/formatDate";
 import { useDispatch } from "react-redux";
 import { useTheme } from "@mui/material";
-import { useDeleteNoteMutation } from "../../../services/apiSlice";
+import { useDeleteNoteMutation } from "../../../app/services/notesApi";
 
 import UpdateNote from "./UpdateNote";
 
@@ -69,17 +69,17 @@ const NoteItem = ({ id, title, content, category, updatedAt }) => {
         disableSpacing
         sx={{ display: "flex", justifyContent: "end" }}
       >
-        <Tooltip title="Remove" placement="top">
-          <IconButton onClick={handleDelete} aria-label="delete">
-            <DeleteOutlinedIcon />
-          </IconButton>
-        </Tooltip>
         <UpdateNote
           id={id}
           title={title}
           content={content}
           category={category}
         />
+        <Tooltip title="Remove" placement="top">
+          <IconButton onClick={handleDelete} aria-label="delete">
+            <DeleteOutlinedIcon />
+          </IconButton>
+        </Tooltip>
       </CardActions>
     </Card>
   );

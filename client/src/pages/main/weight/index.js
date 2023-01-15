@@ -1,4 +1,4 @@
-import { useGetAllWeightsQuery } from "../../../services/apiSlice";
+import { useGetAllWeightsQuery } from "../../../app/services/weightsApi";
 
 import AddWeight from "./AddWeight";
 import WeightTable from "./WeightTable";

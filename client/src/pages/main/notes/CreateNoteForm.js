@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { useCreateNoteMutation } from "../../../services/apiSlice";
+import { useCreateNoteMutation } from "../../../app/services/notesApi";
 import { useFormik } from "formik";
 import noteSchema from "../../../validation/noteSchema";
 import launchAlert from "../../../utilities/launchAlert";

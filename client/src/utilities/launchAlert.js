@@ -1,4 +1,4 @@
-import { displayAlert, hideAlert } from "../services/alertSlice";
+import { displayAlert, hideAlert } from "../app/services/alertSlice";
 
 const launchAlert = (dispatch, error) => {
   if (error) {
