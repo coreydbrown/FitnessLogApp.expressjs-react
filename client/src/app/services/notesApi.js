@@ -3,7 +3,8 @@ import { api } from "./api";
 export const notesApi = api.injectEndpoints({
   endpoints: (build) => ({
     getAllNotes: build.query({
-      query: () => "notes",
+      query: ({ category, sort, search }) =>
+        `notes?category=${category}&sort=${sort}&search=${search}`,
       transformResponse: (resData) => resData.notes,
       providesTags: ["notes"],
     }),

@@ -24,10 +24,13 @@ const NoteItem = ({ id, title, content, category, updatedAt }) => {
   const theme = useTheme();
 
   let noteColor;
-  if (category === "Goal") noteColor = theme.palette.green.main;
-  if (category === "Reminder") noteColor = theme.palette.pink.main;
-  if (category === "Workout Thought") noteColor = theme.palette.orange.main;
-  if (category === "Other") noteColor = theme.palette.purple.main;
+  if (category === "goal") noteColor = theme.palette.green.main;
+  if (category === "reminder") noteColor = theme.palette.pink.main;
+  if (category === "workout-thought") noteColor = theme.palette.orange.main;
+  if (category === "other") noteColor = theme.palette.purple.main;
+
+  let categoryReformatted = category;
+  if (category === "workout-thought") categoryReformatted = "workout thought";
 
   const handleDelete = () => {
     deleteNote(id).then(({ error }) => launchAlert(dispatch, error));
@@ -54,7 +57,7 @@ const NoteItem = ({ id, title, content, category, updatedAt }) => {
           </Avatar>
         }
         title={title}
-        subheader={category}
+        subheader={categoryReformatted}
         subheaderTypographyProps={{ color: noteColor }}
       />
       <CardContent>

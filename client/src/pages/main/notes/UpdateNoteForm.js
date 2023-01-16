@@ -79,19 +79,19 @@ const UpdateNoteForm = ({ id, title, content, category, handleClose }) => {
               value={formik.values.category}
               onChange={formik.handleChange}
             >
-              <FormControlLabel value="Goal" control={<Radio />} label="Goal" />
+              <FormControlLabel value="goal" control={<Radio />} label="Goal" />
               <FormControlLabel
-                value="Reminder"
+                value="reminder"
                 control={<Radio />}
                 label="Reminder"
               />
               <FormControlLabel
-                value="Workout Thought"
+                value="workout-thought"
                 control={<Radio />}
                 label="Workout Thought"
               />
               <FormControlLabel
-                value="Other"
+                value="other"
                 control={<Radio />}
                 label="Other"
               />

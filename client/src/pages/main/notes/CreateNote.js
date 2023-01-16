@@ -20,12 +20,7 @@ const CreateNote = () => {
 
   return (
     <>
-      <Button
-        onClick={handleClickOpen}
-        size="large"
-        variant="outlined"
-        sx={{ mb: 3 }}
-      >
+      <Button onClick={handleClickOpen} size="large" variant="outlined">
         Create a new note
       </Button>
       <Dialog

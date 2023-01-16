@@ -13,7 +13,7 @@ const NoteSchema = new mongoose.Schema(
     category: {
       type: String,
       required: [true, "Please provide category"],
-      enum: ["Reminder", "Goal", "Workout Thought", "Other"],
+      enum: ["reminder", "goal", "workout-thought", "other"],
     },
     createdBy: {
       type: mongoose.Types.ObjectId,

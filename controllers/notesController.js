@@ -34,7 +34,7 @@ const getAllNotes = async (req, res) => {
 
   const notes = await result;
 
-  res.status(StatusCodes.OK).json({ notes, length: notes.length });
+  res.status(StatusCodes.OK).json({ notes });
 };
 
 const updateNote = async (req, res) => {

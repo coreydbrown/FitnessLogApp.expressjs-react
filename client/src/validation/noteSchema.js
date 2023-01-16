@@ -6,7 +6,7 @@ const noteSchema = yup.object().shape({
   category: yup
     .string()
     .required("Required")
-    .oneOf(["Goal", "Reminder", "Workout Thought", "Other"]),
+    .oneOf(["goal", "reminder", "workout-thought", "other"]),
 });
 
 export default noteSchema;
