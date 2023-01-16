@@ -18,9 +18,23 @@ const createNote = async (req, res) => {
 };
 
 const getAllNotes = async (req, res) => {
-  const notes = await Note.find({ createdBy: req.user.userId });
+  const { category, sort, search } = req.query;
 
-  res.status(StatusCodes.OK).json({ notes });
+  const queryObject = {
+    createdBy: req.user.userId,
+  };
+
+  if (category !== "all") queryObject.category = category;
+  if (search) queryObject.title = { $regex: search, $options: "i" };
+
+  let result = Note.find(queryObject);
+
+  if (sort === "newest") result = result.sort("-updatedAt");
+  if (sort === "oldest") result = result.sort("updatedAt");
+
+  const notes = await result;
+
+  res.status(StatusCodes.OK).json({ notes, length: notes.length });
 };
 
 const updateNote = async (req, res) => {
