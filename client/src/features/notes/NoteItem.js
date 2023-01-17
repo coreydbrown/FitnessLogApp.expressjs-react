@@ -1,7 +1,8 @@
-import { formatDateLong } from "../../../utilities/formatDate";
+import { formatDateLong } from "../../utilities/formatDate";
 import { useDispatch } from "react-redux";
 import { useTheme } from "@mui/material";
-import { useDeleteNoteMutation } from "../../../app/services/notesApi";
+import { useDeleteNoteMutation } from "../../app/services/notesApi";
+import launchAlert from "../../utilities/launchAlert";
 
 import UpdateNote from "./UpdateNote";
 
@@ -14,7 +15,6 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
 import Tooltip from "@mui/material/Tooltip";
-import launchAlert from "../../../utilities/launchAlert";
 
 const NoteItem = ({ id, title, content, category, updatedAt }) => {
   const dispatch = useDispatch();

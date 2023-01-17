@@ -1,10 +1,10 @@
 import { useDispatch } from "react-redux";
-import { useAddWeightMutation } from "../../../app/services/weightsApi";
-import launchAlert from "../../../utilities/launchAlert";
+import { useAddWeightMutation } from "../../app/services/weightsApi";
+import launchAlert from "../../utilities/launchAlert";
 import { useFormik } from "formik";
-import weightSchema from "../../../validation/weightSchema";
+import weightSchema from "../../validation/weightSchema";
 
-import CircularProgressButton from "../../../components/CircularProgressButton";
+import CircularProgressButton from "../../components/CircularProgressButton";
 
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";

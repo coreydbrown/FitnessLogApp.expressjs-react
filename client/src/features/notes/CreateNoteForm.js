@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
-import { useCreateNoteMutation } from "../../../app/services/notesApi";
+import { useCreateNoteMutation } from "../../app/services/notesApi";
 import { useFormik } from "formik";
-import noteSchema from "../../../validation/noteSchema";
-import launchAlert from "../../../utilities/launchAlert";
+import noteSchema from "../../validation/noteSchema";
+import launchAlert from "../../utilities/launchAlert";
 
 import Box from "@mui/material/Box";
 import LoadingButton from "@mui/lab/LoadingButton";

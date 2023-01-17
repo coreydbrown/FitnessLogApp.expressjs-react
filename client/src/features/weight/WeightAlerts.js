@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
-import SuccessAlert from "../../../components/status-alerts/SuccessAlert";
-import ErrorAlert from "../../../components/status-alerts/ErrorAlert";
+import SuccessAlert from "../../components/status-alerts/SuccessAlert";
+import ErrorAlert from "../../components/status-alerts/ErrorAlert";
 
 const WeightAlerts = () => {
   const statusGetAll = useSelector((state) => state.weights.statusGetAll);

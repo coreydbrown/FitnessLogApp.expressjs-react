@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useGetAllNotesQuery } from "../../../app/services/notesApi";
+import { useGetAllNotesQuery } from "../app/services/notesApi";
 
-import CreateNote from "./CreateNote";
-import SortFilterSearch from "./SortFilterSearch";
-import NotesList from "./NotesList";
-import LoadingSpinner from "../../../components/LoadingSpinner";
+import CreateNote from "../features/notes/CreateNote";
+import SortFilterSearch from "../features/notes/SortFilterSearch";
+import NotesList from "../features/notes/NotesList";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";

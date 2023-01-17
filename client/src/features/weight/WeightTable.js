@@ -1,6 +1,6 @@
 import { useTheme } from "@mui/material/styles";
 
-import { formatDateMedium } from "../../../utilities/formatDate";
+import { formatDateMedium } from "../../utilities/formatDate";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";

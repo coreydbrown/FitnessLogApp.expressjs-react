@@ -1,8 +1,8 @@
-import { useGetAllWeightsQuery } from "../../../app/services/weightsApi";
+import { useGetAllWeightsQuery } from "../app/services/weightsApi";
 
-import AddWeight from "./AddWeight";
-import WeightTable from "./WeightTable";
-import LoadingSpinner from "../../../components/LoadingSpinner";
+import AddWeight from "../features/weight/AddWeight";
+import WeightTable from "../features/weight/WeightTable";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
