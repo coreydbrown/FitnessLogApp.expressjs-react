@@ -3,12 +3,13 @@ import { useGetAllWeightsQuery } from "../app/services/weightsApi";
 import AddWeight from "../features/weight/AddWeight";
 import WeightTable from "../features/weight/WeightTable";
 import LoadingSpinner from "../components/LoadingSpinner";
+import WeightChart from "../features/weight/WeightChart";
 
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 const Weight = () => {
-  const { data: weights, isLoading, isSuccess } = useGetAllWeightsQuery();
+  const { data: weights = [], isLoading, isSuccess } = useGetAllWeightsQuery();
 
   return (
     <>
@@ -20,6 +21,7 @@ const Weight = () => {
         {isLoading && <LoadingSpinner />}
         {isSuccess && <WeightTable rows={weights} />}
       </Box>
+      {isSuccess && <WeightChart weights={weights} />}
     </>
   );
 };

@@ -15,7 +15,11 @@ const createWeight = async (req, res) => {
 };
 
 const getAllWeights = async (req, res) => {
-  const weights = await Weight.find({ createdBy: req.user.userId });
+  let result = Weight.find({ createdBy: req.user.userId });
+  result = result.sort("-createdAt");
+
+  const weights = await result;
+
   res.status(StatusCodes.OK).json({ weights });
 };
 
