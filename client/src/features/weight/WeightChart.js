@@ -7,9 +7,6 @@ import Box from "@mui/material/Box";
 
 const WeightChart = ({ weights }) => {
   const theme = useTheme();
-  const greaterThanMid = useMediaQuery(theme.breakpoints.up("md"));
-  const smallToMid = useMediaQuery(theme.breakpoints.between("sm", "md"));
-  const lessThanSmall = useMediaQuery(theme.breakpoints.down("sm"));
   let height = 600;
   if (useMediaQuery(theme.breakpoints.down("lg"))) height = 500;
   if (useMediaQuery(theme.breakpoints.down("md"))) height = 400;

@@ -11,7 +11,7 @@ const start = async () => {
     await connectDB(process.env.MONGO_URL);
     await Weight.deleteMany();
     const jsonWeights = JSON.parse(
-      await readFile(new URL("./mock-data.json", import.meta.url))
+      await readFile(new URL("./mock-data/weights.json", import.meta.url))
     );
     await Weight.create(jsonWeights);
     console.log("Success!");
