@@ -10,7 +10,6 @@ import {
   amber,
   deepOrange,
   grey,
-  blueGrey,
 } from "@mui/material/colors";
 
 const lightModeColors = {
@@ -26,36 +25,43 @@ const lightModeColors = {
 
   red: {
     main: red[500],
+    dark: red[600],
   },
   pink: {
     main: pink[500],
+    dark: pink[600],
   },
   purple: {
     main: deepPurple[500],
+    dark: deepPurple[600],
   },
   indigo: {
     main: indigo[500],
+    dark: indigo[600],
   },
   cyan: {
     main: cyan[700],
+    dark: cyan[800],
   },
   teal: {
     main: teal[500],
+    dark: teal[600],
   },
   green: {
     main: green[600],
+    dark: green[700],
   },
   yellow: {
     main: yellow[600],
+    dark: yellow[700],
   },
   amber: {
     main: amber[600],
+    dark: amber[700],
   },
   orange: {
     main: deepOrange[500],
-  },
-  blueGrey: {
-    main: blueGrey[500],
+    dark: deepOrange[600],
   },
 };
 
@@ -73,36 +79,43 @@ const darkModeColors = {
 
   red: {
     main: red[200],
+    dark: red[400],
   },
   pink: {
     main: pink[200],
+    dark: pink[400],
   },
   purple: {
     main: deepPurple[200],
+    dark: deepPurple[400],
   },
   indigo: {
     main: indigo[200],
+    dark: indigo[400],
   },
   cyan: {
     main: cyan[200],
+    dark: cyan[400],
   },
   teal: {
     main: teal[200],
+    dark: teal[400],
   },
   green: {
     main: green[200],
+    dark: green[400],
   },
   yellow: {
     main: yellow[200],
+    dark: yellow[400],
   },
   amber: {
     main: amber[200],
+    dark: amber[400],
   },
   orange: {
     main: deepOrange[200],
-  },
-  blueGrey: {
-    main: blueGrey[200],
+    dark: deepOrange[400],
   },
 };
 
