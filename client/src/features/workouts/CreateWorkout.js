@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useTheme } from "@mui/material";
 
-import CreateWorkoutFormNew from "./CreateWorkoutFormNew";
+import CreateWorkoutForm from "./CreateWorkoutForm";
 
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -31,15 +31,16 @@ const CreateWorkout = () => {
       <Dialog
         open={open}
         onClose={handleClose}
-        maxWidth="xs"
+        maxWidth="md"
         PaperProps={{
           style: {
             backgroundColor: theme.palette.background.paper,
             backgroundImage: "none",
           },
         }}
+        // sx={{ maxWidth: 750 }}
       >
-        <CreateWorkoutFormNew handleClose={handleClose} />
+        <CreateWorkoutForm handleClose={handleClose} />
       </Dialog>
     </>
   );

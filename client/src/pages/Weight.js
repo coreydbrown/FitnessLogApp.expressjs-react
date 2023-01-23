@@ -16,12 +16,14 @@ const Weight = () => {
       <Typography component="h2" variant="h4" mb={3}>
         WEIGHT
       </Typography>
-      <Box display="flex" flexDirection="column" alignItems="center">
+      <Box display="flex" justifyContent="center">
         <AddWeight />
+      </Box>
+      {isSuccess && <WeightChart weights={weights} />}
+      <Box display="flex" justifyContent="center" mt={8}>
         {isLoading && <LoadingSpinner />}
         {isSuccess && <WeightTable rows={weights} />}
       </Box>
-      {isSuccess && <WeightChart weights={weights} />}
     </>
   );
 };

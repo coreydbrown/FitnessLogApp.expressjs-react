@@ -13,7 +13,7 @@ const WorkoutItem = ({ exercises, createdAt }) => {
   return (
     <Card
       sx={{
-        width: 275,
+        width: 350,
         backgroundImage: "none",
         border:
           theme.palette.mode === "dark"
@@ -38,6 +38,7 @@ const WorkoutItem = ({ exercises, createdAt }) => {
           <ExerciseRow
             key={exercise._id}
             exercise={exercise.exercise}
+            weight={exercise.weight}
             sets={exercise.sets}
             reps={exercise.reps}
           />

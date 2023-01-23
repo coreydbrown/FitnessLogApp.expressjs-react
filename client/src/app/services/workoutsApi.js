@@ -7,15 +7,15 @@ export const workoutsApi = api.injectEndpoints({
       transformResponse: (resData) => resData.workouts,
       providesTags: ["workouts"],
     }),
-    // addWeight: build.mutation({
-    //   query: (weight) => ({
-    //     url: "weight",
-    //     method: "POST",
-    //     body: weight,
-    //   }),
-    //   invalidatesTags: ["weights"],
-    // }),
+    addWorkout: build.mutation({
+      query: (workout) => ({
+        url: "workouts",
+        method: "POST",
+        body: workout,
+      }),
+      invalidatesTags: ["workouts"],
+    }),
   }),
 });
 
-export const { useGetAllWorkoutsQuery } = workoutsApi;
+export const { useGetAllWorkoutsQuery, useAddWorkoutMutation } = workoutsApi;

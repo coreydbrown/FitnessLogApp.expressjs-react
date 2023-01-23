@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material";
 import Box from "@mui/material/Box";
 
-const ExerciseRow = ({ exercise, sets, reps, bgColor, textColor }) => {
+const ExerciseRow = ({ exercise, weight, sets, reps }) => {
   const theme = useTheme();
 
   return (
@@ -18,6 +18,9 @@ const ExerciseRow = ({ exercise, sets, reps, bgColor, textColor }) => {
         {exercise}
       </Box>
       <Box
+        flexGrow={0}
+        flexShrink={0}
+        width={50}
         border={2}
         borderLeft={1}
         borderRight={1}
@@ -25,9 +28,25 @@ const ExerciseRow = ({ exercise, sets, reps, bgColor, textColor }) => {
         pl={1}
         pr={1}
       >
+        {`${weight} lbs.`}
+      </Box>
+      <Box
+        flexGrow={0}
+        flexShrink={0}
+        width={50}
+        border={2}
+        borderLeft={1}
+        borderRight={1}
+        borderColor={theme.palette.teal.dark}
+        pl={1}
+        pr={1}
+      >
         {`${sets} sets`}
       </Box>
       <Box
+        flexGrow={0}
+        flexShrink={0}
+        width={50}
         borderRadius="0 5px 5px 0"
         border={2}
         borderLeft={1}

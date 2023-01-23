@@ -14,6 +14,11 @@ const workoutSchema = yup.object().shape({
         .typeError("Must be a number")
         .required("Required")
         .positive("Must be a positive number"),
+      reps: yup
+        .number()
+        .typeError("Must be a number")
+        .required("Required")
+        .positive("Must be a positive number"),
     })
   ),
 });
