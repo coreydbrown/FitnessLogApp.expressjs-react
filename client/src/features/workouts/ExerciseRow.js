@@ -14,6 +14,8 @@ const ExerciseRow = ({ exercise, weight, sets, reps }) => {
         borderColor={theme.palette.indigo.dark}
         pl={1}
         pr={1}
+        display="flex"
+        alignItems="center"
       >
         {exercise}
       </Box>
