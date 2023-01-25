@@ -86,7 +86,7 @@ function Nav(props) {
             },
           }}
         >
-          <Sidebar />
+          <Sidebar handleDrawerToggle={handleDrawerToggle} />
         </Drawer>
         <Drawer
           variant="permanent"

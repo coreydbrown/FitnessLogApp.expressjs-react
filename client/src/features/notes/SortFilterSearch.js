@@ -33,7 +33,7 @@ const SortFilterSearch = ({
       flexDirection={{ xs: "column", md: "row" }}
     >
       <Box display="flex">
-        <FormControl size="small" sx={{ m: 1, minWidth: 120 }}>
+        <FormControl size="small" sx={{ m: 1 }}>
           <InputLabel id="filter-select-label">Filter</InputLabel>
           <Select
             labelId="filter-select-label"
@@ -52,7 +52,7 @@ const SortFilterSearch = ({
           </Select>
         </FormControl>
 
-        <FormControl size="small" sx={{ m: 1, minWidth: 120 }}>
+        <FormControl size="small" sx={{ m: 1 }}>
           <InputLabel id="sort-select-label">Sort</InputLabel>
           <Select
             labelId="sort-select-label"
@@ -67,11 +67,11 @@ const SortFilterSearch = ({
         </FormControl>
       </Box>
 
-      <FormControl sx={{ ml: 1, minWidth: 120 }}>
+      <FormControl sx={{ ml: 1, maxWidth: 180 }}>
         <TextField
           onChange={handleSearchChange}
           id="search"
-          label="search"
+          label="Search"
           type="search"
           value={search}
           size="small"

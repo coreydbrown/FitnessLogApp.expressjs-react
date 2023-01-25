@@ -13,7 +13,6 @@ const WorkoutItem = ({ exercises, createdAt }) => {
   return (
     <Card
       sx={{
-        width: 350,
         backgroundImage: "none",
         border:
           theme.palette.mode === "dark"

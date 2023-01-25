@@ -39,7 +39,7 @@ const NoteItem = ({ id, title, content, category, updatedAt }) => {
   return (
     <Card
       sx={{
-        maxWidth: 300,
+        width: "100%",
         backgroundImage: "none",
         border:
           theme.palette.mode === "dark"

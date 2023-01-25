@@ -36,10 +36,10 @@ app.use(helmet());
 app.use(xss());
 app.use(mongoSanitize());
 
-app.use("/auth", authRoutes);
-app.use("/workouts", authenticateUser, workoutsRoutes);
-app.use("/weight/", authenticateUser, weightRoutes);
-app.use("/notes", authenticateUser, notesRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/workouts", authenticateUser, workoutsRoutes);
+app.use("/api/weight/", authenticateUser, weightRoutes);
+app.use("/api/notes", authenticateUser, notesRoutes);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));

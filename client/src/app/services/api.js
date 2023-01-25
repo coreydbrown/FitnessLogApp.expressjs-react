@@ -4,7 +4,7 @@ import { store } from "../store";
 export const api = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "/",
+    baseUrl: "/api",
     prepareHeaders: (headers) => {
       const token = store.getState().auth.token;
       if (token) {
