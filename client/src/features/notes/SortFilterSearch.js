@@ -26,47 +26,55 @@ const SortFilterSearch = ({
   };
 
   return (
-    <Box display="flex" alignItems="center">
-      <FormControl size="small" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="filter-select-label">Filter</InputLabel>
-        <Select
-          labelId="filter-select-label"
-          id="filter-select"
-          value={category}
-          onChange={handleFilterChange}
-          label="Filter"
-        >
-          <MenuItem value="all">
-            <em>None</em>
-          </MenuItem>
-          <MenuItem value="goal">Goals</MenuItem>
-          <MenuItem value="reminder">Reminders</MenuItem>
-          <MenuItem value="workout-thought">Workout Thoughts</MenuItem>
-          <MenuItem value="other">Other</MenuItem>
-        </Select>
-      </FormControl>
+    <Box
+      display="flex"
+      justifyContent="flex-end"
+      alignItems="center"
+      flexDirection={{ xs: "column", md: "row" }}
+    >
+      <Box display="flex">
+        <FormControl size="small" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="filter-select-label">Filter</InputLabel>
+          <Select
+            labelId="filter-select-label"
+            id="filter-select"
+            value={category}
+            onChange={handleFilterChange}
+            label="Filter"
+          >
+            <MenuItem value="all">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value="goal">Goals</MenuItem>
+            <MenuItem value="reminder">Reminders</MenuItem>
+            <MenuItem value="workout-thought">Workout Thoughts</MenuItem>
+            <MenuItem value="other">Other</MenuItem>
+          </Select>
+        </FormControl>
 
-      <FormControl size="small" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="sort-select-label">Sort</InputLabel>
-        <Select
-          labelId="sort-select-label"
-          id="sort-select"
-          value={sort}
-          onChange={handleSortChange}
-          label="Sort"
-        >
-          <MenuItem value="newest">Newest</MenuItem>
-          <MenuItem value="oldest">Oldest</MenuItem>
-        </Select>
-      </FormControl>
-      <FormControl>
+        <FormControl size="small" sx={{ m: 1, minWidth: 120 }}>
+          <InputLabel id="sort-select-label">Sort</InputLabel>
+          <Select
+            labelId="sort-select-label"
+            id="sort-select"
+            value={sort}
+            onChange={handleSortChange}
+            label="Sort"
+          >
+            <MenuItem value="newest">Newest</MenuItem>
+            <MenuItem value="oldest">Oldest</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
+
+      <FormControl sx={{ ml: 1, minWidth: 120 }}>
         <TextField
           onChange={handleSearchChange}
           id="search"
           label="search"
           type="search"
+          value={search}
           size="small"
-          sx={{ minWidth: 120, ml: 1 }}
         />
       </FormControl>
     </Box>

@@ -5,20 +5,20 @@ dotenv.config();
 
 import connectDB from "./db/connect.js";
 
-import Workout from "./models/Workout.js";
+// import Workout from "./models/Workout.js";
 // import Note from "./models/Note.js";
-// import Weight from "./models/Weight.js";
+import Weight from "./models/Weight.js";
 
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URL);
 
     // Workouts
-    await Workout.deleteMany();
-    const jsonWorkouts = JSON.parse(
-      await readFile(new URL("./mock-data/workouts.json", import.meta.url))
-    );
-    await Workout.create(jsonWorkouts);
+    // await Workout.deleteMany();
+    // const jsonWorkouts = JSON.parse(
+    //   await readFile(new URL("./mock-data/workouts.json", import.meta.url))
+    // );
+    // await Workout.create(jsonWorkouts);
 
     // Notes
     // await Note.deleteMany();
@@ -28,11 +28,11 @@ const start = async () => {
     // await Note.create(jsonNotes);
 
     // Weights
-    // await Weight.deleteMany();
-    // const jsonWeights = JSON.parse(
-    //   await readFile(new URL("./mock-data/weights.json", import.meta.url))
-    // );
-    // await Weight.create(jsonWeights);
+    await Weight.deleteMany();
+    const jsonWeights = JSON.parse(
+      await readFile(new URL("./mock-data/weights.json", import.meta.url))
+    );
+    await Weight.create(jsonWeights);
 
     console.log("Success!");
     process.exit(0);

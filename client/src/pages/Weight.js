@@ -19,10 +19,10 @@ const Weight = () => {
       <Box display="flex" justifyContent="center">
         <AddWeight />
       </Box>
-      {isSuccess && <WeightChart weights={weights} />}
+      {isSuccess && weights.length > 0 && <WeightChart weights={weights} />}
       <Box display="flex" justifyContent="center" mt={8}>
         {isLoading && <LoadingSpinner />}
-        {isSuccess && <WeightTable rows={weights} />}
+        {isSuccess && weights.length > 0 && <WeightTable rows={weights} />}
       </Box>
     </>
   );

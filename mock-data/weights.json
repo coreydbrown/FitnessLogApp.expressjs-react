@@ -1,107 +1,102 @@
 [
   {
-    "weight": 170.2,
+    "weight": 177.6,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-01T04:54:01Z"
   },
   {
-    "weight": 170.8,
+    "weight": 177.8,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-02T17:06:36Z"
   },
   {
-    "weight": 171.2,
+    "weight": 176.9,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-04T09:10:23Z"
   },
   {
-    "weight": 170.9,
+    "weight": 177.1,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-05T12:02:52Z"
   },
   {
-    "weight": 171.3,
+    "weight": 176.5,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-07T08:14:27Z"
   },
   {
-    "weight": 171.8,
+    "weight": 176.3,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-09T19:20:39Z"
   },
   {
-    "weight": 172.2,
+    "weight": 176.7,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-11T04:54:01Z"
   },
   {
-    "weight": 172.8,
+    "weight": 175.8,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-13T17:06:36Z"
   },
   {
-    "weight": 171.9,
+    "weight": 176.3,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-14T09:10:23Z"
   },
   {
-    "weight": 173.1,
+    "weight": 175.9,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-15T12:02:52Z"
   },
   {
-    "weight": 173.8,
+    "weight": 175.9,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-19T08:14:27Z"
   },
   {
-    "weight": 172.4,
+    "weight": 175.7,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-21T19:20:39Z"
   },
   {
-    "weight": 173.9,
-    "createdBy": "63bd94024aa858f1396e1845",
-    "createdAt": "2023-01-22T04:54:01Z"
-  },
-  {
-    "weight": 174.8,
+    "weight": 175.3,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-24T17:06:36Z"
   },
   {
-    "weight": 173.6,
+    "weight": 175.6,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-25T09:10:23Z"
   },
   {
-    "weight": 175.1,
+    "weight": 175.4,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-26T12:02:52Z"
   },
   {
-    "weight": 174.5,
+    "weight": 176.0,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-28T08:14:27Z"
   },
   {
-    "weight": 174.4,
+    "weight": 175.8,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-29T19:20:39Z"
   },
 
   {
-    "weight": 174.2,
+    "weight": 175.5,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-02-01T04:54:01Z"
   },
   {
-    "weight": 174.8,
+    "weight": 175.8,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-02-02T17:06:36Z"
   },
   {
-    "weight": 175.2,
+    "weight": 175.4,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-02-04T09:10:23Z"
   },
@@ -131,7 +126,7 @@
     "createdAt": "2023-02-13T17:06:36Z"
   },
   {
-    "weight": 175.9,
+    "weight": 176.9,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-02-14T09:10:23Z"
   },
@@ -146,11 +141,6 @@
     "createdAt": "2023-02-19T08:14:27Z"
   },
   {
-    "weight": 177.4,
-    "createdBy": "63bd94024aa858f1396e1845",
-    "createdAt": "2023-02-21T19:20:39Z"
-  },
-  {
     "weight": 178.9,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-02-22T04:54:01Z"
@@ -161,7 +151,7 @@
     "createdAt": "2023-02-24T17:06:36Z"
   },
   {
-    "weight": 178.6,
+    "weight": 179.1,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-02-25T09:10:23Z"
   },
@@ -171,18 +161,17 @@
     "createdAt": "2023-02-26T12:02:52Z"
   },
   {
-    "weight": 179.5,
+    "weight": 179.3,
     "createdBy": "63bd94024aa858f1396e1845",
-    "createdAt": "2023-02-28T08:14:27Z"
+    "createdAt": "2023-02-27T19:20:39Z"
   },
-  {
-    "weight": 178.4,
-    "createdBy": "63bd94024aa858f1396e1845",
-    "createdAt": "2023-02-29T19:20:39Z"
-  },
-
   {
     "weight": 179.2,
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-28T19:20:39Z"
+  },
+  {
+    "weight": 178.6,
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-03-01T04:54:01Z"
   },
