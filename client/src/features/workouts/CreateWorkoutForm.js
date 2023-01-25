@@ -202,7 +202,6 @@ const CreateWorkoutForm = ({ handleClose }) => {
                       type="submit"
                       endIcon={<AddCircleIcon />}
                       loading={isLoading}
-                      loading={false}
                       loadingPosition="end"
                       variant="contained"
                     >
