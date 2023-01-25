@@ -27,6 +27,8 @@ import errorHandlerMiddleware from "./middleware/error-handler.js";
 import authenticateUser from "./middleware/authenticate.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Only for deployment
 app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 app.use(express.json());
