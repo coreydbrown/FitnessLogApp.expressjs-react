@@ -20,6 +20,7 @@ import authRoutes from "./routes/authRoutes.js";
 import workoutsRoutes from "./routes/workoutsRoutes.js";
 import weightRoutes from "./routes/weightRoutes.js";
 import notesRoutes from "./routes/notesRoutes.js";
+import recordsRoutes from "./routes/recordsRoutes.js";
 
 // middleware
 import notFoundMiddleware from "./middleware/not-found.js";
@@ -40,6 +41,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/workouts", authenticateUser, workoutsRoutes);
 app.use("/api/weight/", authenticateUser, weightRoutes);
 app.use("/api/notes", authenticateUser, notesRoutes);
+app.use("/api/records", authenticateUser, recordsRoutes);
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));

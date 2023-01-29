@@ -71,7 +71,7 @@ const CreateWorkoutForm = ({ handleClose }) => {
                       const errorReps = getIn(errors, reps);
 
                       return (
-                        <Box key={index} bgcolor="green">
+                        <Box key={index}>
                           <DialogContent>
                             <Grid
                               container
