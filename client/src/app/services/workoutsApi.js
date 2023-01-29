@@ -12,7 +12,7 @@ export const workoutsApi = api.injectEndpoints({
         method: "POST",
         body: workout,
       }),
-      invalidatesTags: ["workouts"],
+      invalidatesTags: ["workouts", "records"],
     }),
   }),
 });
