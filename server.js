@@ -17,6 +17,7 @@ import connectDB from "./db/connect.js";
 
 //routers
 import authRoutes from "./routes/authRoutes.js";
+import statsRoutes from "./routes/statsRoutes.js";
 import workoutsRoutes from "./routes/workoutsRoutes.js";
 import weightRoutes from "./routes/weightRoutes.js";
 import notesRoutes from "./routes/notesRoutes.js";
@@ -38,6 +39,7 @@ app.use(xss());
 app.use(mongoSanitize());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/stats", authenticateUser, statsRoutes);
 app.use("/api/workouts", authenticateUser, workoutsRoutes);
 app.use("/api/weight/", authenticateUser, weightRoutes);
 app.use("/api/notes", authenticateUser, notesRoutes);
