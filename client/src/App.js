@@ -1,6 +1,6 @@
 import ProtectedRoute from "./layout/ProtectedRoute";
 import AppLayout from "./layout/AppLayout";
-import Dashboard from "./pages/Dashboard";
+import Stats from "./pages/Stats";
 import Workouts from "./pages/Workouts";
 import Weight from "./pages/Weight";
 import Notes from "./pages/Notes";
@@ -23,8 +23,8 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route index element={<Dashboard />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route index element={<Stats />} />
+          <Route path="stats" element={<Stats />} />
           <Route path="workouts" element={<Workouts />} />
           <Route path="weight" element={<Weight />} />
           <Route path="notes" element={<Notes />} />

@@ -55,12 +55,12 @@ const Sidebar = ({ handleDrawerToggle }) => {
           <ListItemButton
             onClick={handleDrawerToggle}
             component={Link}
-            to="/dashboard"
+            to="/stats"
           >
             <ListItemIcon>
               <HomeOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Dashboard" />
+            <ListItemText primary="Stats" />
           </ListItemButton>
         </ListItem>
 

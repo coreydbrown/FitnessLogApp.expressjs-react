@@ -1,13 +1,12 @@
 import { ResponsiveLine } from "@nivo/line";
 import { useTheme, useMediaQuery } from "@mui/material";
 import moment from "moment";
-import randomColorGenerator from "../../utilities/randomColorGenerator";
 
 import Box from "@mui/material/Box";
 
 const WeightChart = ({ weights }) => {
   const theme = useTheme();
-  let height = 600;
+  let height = 500;
   if (useMediaQuery(theme.breakpoints.down("lg"))) height = 500;
   if (useMediaQuery(theme.breakpoints.down("md"))) height = 400;
 
@@ -104,7 +103,7 @@ const WeightChart = ({ weights }) => {
             <div>Weight: {point.data.yFormatted}</div>
           </Box>
         )}
-        colors={[randomColorGenerator(muiTheme)]}
+        colors={[theme.palette.green.main]}
         pointSize={10}
         pointColor={{ theme: "background" }}
         pointBorderWidth={2}
