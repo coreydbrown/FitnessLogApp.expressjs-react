@@ -1,7 +1,10 @@
-import { useTheme } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
+
+import StatsWeightsItem from "./StatsWeightsItem";
 
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
+import Box from "@mui/material/Box";
 
 const StatsWeightsBox = ({
   weightChangeLastWeek,
@@ -14,8 +17,9 @@ const StatsWeightsBox = ({
   return (
     <Card
       sx={{
-        height: 500,
+        height: 532,
         backgroundImage: "none",
+        pt: 3,
         border:
           theme.palette.mode === "dark"
             ? `1px solid ${theme.palette.divider}`
@@ -23,10 +27,19 @@ const StatsWeightsBox = ({
       }}
     >
       <CardContent>
-        <div>{weightChangeLastWeek}</div>
-        <div>{weightChangeLastMonth}</div>
-        <div>{weightChangeLast3Months}</div>
-        <div>{weightChangeLastYear}</div>
+        <Typography component="h5" variant="h6">
+          Weight change over past:
+        </Typography>
+        <Box sx={{ pl: 3, pr: 3 }}>
+          {[
+            { timeFrame: "week", weightChange: weightChangeLastWeek },
+            { timeFrame: "month", weightChange: weightChangeLastMonth },
+            { timeFrame: "3 months", weightChange: weightChangeLast3Months },
+            { timeFrame: "year", weightChange: weightChangeLastYear },
+          ].map((item) => (
+            <StatsWeightsItem key={item.timeFrame} weightStatItem={item} />
+          ))}
+        </Box>
       </CardContent>
     </Card>
   );

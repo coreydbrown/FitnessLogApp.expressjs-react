@@ -16,6 +16,7 @@ const NumberSquare = ({ number }) => {
         border: `5px solid ${theme.palette.primary.main}`,
         borderRadius: 5,
         margin: "25px",
+        bgcolor: theme.palette.background.default,
       }}
     >
       <Typography component="span" variant="h4" color="primary">

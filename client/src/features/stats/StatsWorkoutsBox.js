@@ -35,7 +35,7 @@ const StatsWorkoutsBox = ({
             }}
           >
             <Typography>{statName}</Typography>
-            <Typography color="secondary" variant="h6">
+            <Typography color="secondary" variant="h5">
               {statTimeFrame}
             </Typography>
           </Box>

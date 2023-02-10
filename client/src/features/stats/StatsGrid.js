@@ -4,6 +4,7 @@ import StatsWeightsBox from "./StatsWeightsBox";
 import StatsRecordBox from "./StatsRecordBox";
 
 import Grid from "@mui/material/Grid";
+import { Typography, Box } from "@mui/material";
 
 const StatsGrid = ({ stats, weights }) => {
   return (
@@ -41,7 +42,10 @@ const StatsGrid = ({ stats, weights }) => {
         />
       </Grid>
 
-      <Grid item xs={12} lg={8}>
+      <Grid item xs={12} lg={8} sx={{ textAlign: "center" }}>
+        <Typography component="h3" variant="h6">
+          Weight Chart
+        </Typography>
         <WeightChart weights={weights} />
       </Grid>
 
