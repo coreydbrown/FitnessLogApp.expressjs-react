@@ -14,7 +14,7 @@ const getStats = async (req, res) => {
   // Number of workouts within last week
   const numWorkoutsLastWeek = workoutsLastWeek.length;
   // Percentage of days worked out in last week
-  const workoutPercentageLastWeek = numWorkoutsLastWeek / 30;
+  const workoutPercentageLastWeek = Math.round((numWorkoutsLastWeek / 7) * 100);
 
   // Workouts within last month
   const workoutsLastMonth = await Workout.find({
@@ -26,7 +26,9 @@ const getStats = async (req, res) => {
   // Number of workouts within last month
   const numWorkoutsLastMonth = workoutsLastMonth.length;
   // Percentage of days worked out in last month
-  const workoutPercentageLastMonth = numWorkoutsLastMonth / 30;
+  const workoutPercentageLastMonth = Math.round(
+    (numWorkoutsLastMonth / 30) * 100
+  );
 
   // Weight change last week
   const weightsLastWeek = await Weight.find({

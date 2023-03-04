@@ -28,9 +28,11 @@ const PercentageCircle = ({ percentage }) => {
           zIndex: 100,
         }}
       >
-        <Typography component="span" variant="h4" color="primary">{`${
-          percentage * 100
-        }%`}</Typography>
+        <Typography
+          component="span"
+          variant="h4"
+          color="primary"
+        >{`${percentage}%`}</Typography>
       </Box>
     </Box>
   );

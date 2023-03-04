@@ -659,5 +659,322 @@
     ],
     "createdBy": "63bd94024aa858f1396e1845",
     "createdAt": "2023-01-11T06:08:50Z"
+  },
+
+  {
+    "exercises": [
+      { "exercise": "Bicep curls", "weight": 126, "sets": 3, "reps": 6 },
+      { "exercise": "Bench press", "weight": 51, "sets": 3, "reps": 14 },
+      { "exercise": "Bicep curls", "weight": 160, "sets": 4, "reps": 9 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-01T19:24:45Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Military press", "weight": 99, "sets": 5, "reps": 10 },
+      { "exercise": "Lunges", "weight": 152, "sets": 5, "reps": 12 },
+      { "exercise": "Lat pulldown", "weight": 136, "sets": 2, "reps": 15 },
+      { "exercise": "Lunges", "weight": 62, "sets": 3, "reps": 5 },
+      { "exercise": "Bench press", "weight": 166, "sets": 5, "reps": 10 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-02T13:32:22Z"
+  },
+  {
+    "exercises": [
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 160,
+        "sets": 5,
+        "reps": 19
+      },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 130,
+        "sets": 5,
+        "reps": 14
+      },
+      { "exercise": "Leg Press", "weight": 135, "sets": 3, "reps": 7 },
+      { "exercise": "Squats", "weight": 157, "sets": 3, "reps": 7 },
+      { "exercise": "Deadlift", "weight": 158, "sets": 2, "reps": 11 },
+      { "exercise": "Deadlift", "weight": 102, "sets": 3, "reps": 18 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-04T17:47:49Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Deadlift", "weight": 139, "sets": 2, "reps": 5 },
+      { "exercise": "Bicep curls", "weight": 127, "sets": 2, "reps": 17 },
+      { "exercise": "Deadlift", "weight": 49, "sets": 4, "reps": 13 },
+      { "exercise": "Bicep curls", "weight": 79, "sets": 3, "reps": 14 },
+      { "exercise": "Tricep extension", "weight": 170, "sets": 5, "reps": 16 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-06T16:52:48Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Tricep extension", "weight": 140, "sets": 5, "reps": 9 },
+      { "exercise": "Leg Press", "weight": 135, "sets": 3, "reps": 9 },
+      { "exercise": "Squats", "weight": 179, "sets": 2, "reps": 16 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-08T09:53:13Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Squats", "weight": 41, "sets": 5, "reps": 5 },
+      { "exercise": "Squats", "weight": 50, "sets": 5, "reps": 18 },
+      { "exercise": "Deadlift", "weight": 23, "sets": 2, "reps": 12 },
+      { "exercise": "Leg Press", "weight": 68, "sets": 5, "reps": 16 },
+      { "exercise": "Lat pulldown", "weight": 84, "sets": 5, "reps": 17 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-09T07:33:23Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Tricep extension", "weight": 51, "sets": 2, "reps": 6 },
+      { "exercise": "Squats", "weight": 67, "sets": 4, "reps": 11 },
+      { "exercise": "Lunges", "weight": 163, "sets": 3, "reps": 12 },
+      { "exercise": "Bench press", "weight": 145, "sets": 3, "reps": 5 },
+      { "exercise": "Rows", "weight": 90, "sets": 4, "reps": 20 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-10T00:39:49Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Bench press", "weight": 34, "sets": 4, "reps": 16 },
+      { "exercise": "Deadlift", "weight": 36, "sets": 2, "reps": 18 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-13T23:39:31Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Deadlift", "weight": 65, "sets": 4, "reps": 14 },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 150,
+        "sets": 3,
+        "reps": 13
+      },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 32,
+        "sets": 4,
+        "reps": 13
+      },
+      {
+        "exercise": "Front shoulder raises",
+        "weight": 123,
+        "sets": 2,
+        "reps": 17
+      },
+      { "exercise": "Bicep curls", "weight": 128, "sets": 4, "reps": 14 },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 63,
+        "sets": 3,
+        "reps": 18
+      }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-15T00:11:32Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Deadlift", "weight": 122, "sets": 5, "reps": 8 },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 110,
+        "sets": 3,
+        "reps": 15
+      }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-01-22T04:46:01Z"
+  },
+  {
+    "exercises": [
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 185,
+        "sets": 3,
+        "reps": 6
+      },
+      { "exercise": "Deadlift", "weight": 105, "sets": 2, "reps": 10 },
+      { "exercise": "Leg Press", "weight": 33, "sets": 3, "reps": 9 },
+      { "exercise": "Leg Press", "weight": 65, "sets": 2, "reps": 10 },
+      { "exercise": "Squats", "weight": 41, "sets": 2, "reps": 8 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-16T19:23:29Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Rows", "weight": 150, "sets": 3, "reps": 19 },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 104,
+        "sets": 3,
+        "reps": 17
+      }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-17T00:45:03Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Lunges", "weight": 93, "sets": 3, "reps": 11 },
+      { "exercise": "Bench press", "weight": 25, "sets": 3, "reps": 9 },
+      { "exercise": "Bench press", "weight": 29, "sets": 3, "reps": 9 },
+      { "exercise": "Deadlift", "weight": 132, "sets": 4, "reps": 14 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-20T15:46:08Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Military press", "weight": 121, "sets": 2, "reps": 15 },
+      { "exercise": "Deadlift", "weight": 142, "sets": 4, "reps": 19 },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 102,
+        "sets": 2,
+        "reps": 16
+      },
+      {
+        "exercise": "Front shoulder raises",
+        "weight": 93,
+        "sets": 5,
+        "reps": 7
+      },
+      { "exercise": "Lat pulldown", "weight": 59, "sets": 2, "reps": 17 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-23T04:46:37Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Bench press", "weight": 95, "sets": 4, "reps": 11 },
+      { "exercise": "Bicep curls", "weight": 167, "sets": 5, "reps": 6 },
+      { "exercise": "Bicep curls", "weight": 167, "sets": 4, "reps": 10 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-24T18:32:17Z"
+  },
+  {
+    "exercises": [
+      {
+        "exercise": "Front shoulder raises",
+        "weight": 55,
+        "sets": 5,
+        "reps": 13
+      },
+      { "exercise": "Deadlift", "weight": 185, "sets": 5, "reps": 17 },
+      { "exercise": "Squats", "weight": 55, "sets": 5, "reps": 7 },
+      {
+        "exercise": "Front shoulder raises",
+        "weight": 48,
+        "sets": 4,
+        "reps": 16
+      },
+      {
+        "exercise": "Front shoulder raises",
+        "weight": 155,
+        "sets": 4,
+        "reps": 11
+      }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-26T03:42:51Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Deadlift", "weight": 56, "sets": 3, "reps": 20 },
+      { "exercise": "Rows", "weight": 47, "sets": 5, "reps": 15 },
+      { "exercise": "Squats", "weight": 48, "sets": 3, "reps": 17 },
+      { "exercise": "Squats", "weight": 74, "sets": 4, "reps": 14 },
+      {
+        "exercise": "Front shoulder raises",
+        "weight": 96,
+        "sets": 2,
+        "reps": 7
+      }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-27T23:03:41Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Squats", "weight": 182, "sets": 2, "reps": 15 },
+      { "exercise": "Squats", "weight": 126, "sets": 4, "reps": 10 },
+      { "exercise": "Deadlift", "weight": 165, "sets": 5, "reps": 15 },
+      { "exercise": "Deadlift", "weight": 50, "sets": 2, "reps": 10 },
+      { "exercise": "Rows", "weight": 41, "sets": 5, "reps": 7 },
+      {
+        "exercise": "Front shoulder raises",
+        "weight": 117,
+        "sets": 4,
+        "reps": 9
+      }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-02-28T18:32:16Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Leg Press", "weight": 119, "sets": 2, "reps": 9 },
+      { "exercise": "Bicep curls", "weight": 21, "sets": 2, "reps": 12 },
+      { "exercise": "Bench press", "weight": 151, "sets": 5, "reps": 13 }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-03-01T16:02:14Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Lunges", "weight": 41, "sets": 3, "reps": 18 },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 47,
+        "sets": 4,
+        "reps": 9
+      },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 135,
+        "sets": 4,
+        "reps": 10
+      },
+      {
+        "exercise": "Close-grip bench press",
+        "weight": 88,
+        "sets": 5,
+        "reps": 7
+      }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-03-02T05:48:55Z"
+  },
+  {
+    "exercises": [
+      { "exercise": "Lunges", "weight": 117, "sets": 5, "reps": 17 },
+      { "exercise": "Bench press", "weight": 158, "sets": 4, "reps": 9 },
+      { "exercise": "Rows", "weight": 107, "sets": 3, "reps": 19 },
+      { "exercise": "Deadlift", "weight": 131, "sets": 3, "reps": 19 },
+      { "exercise": "Lat pulldown", "weight": 87, "sets": 2, "reps": 20 },
+      {
+        "exercise": "Front shoulder raises",
+        "weight": 154,
+        "sets": 3,
+        "reps": 19
+      }
+    ],
+    "createdBy": "63bd94024aa858f1396e1845",
+    "createdAt": "2023-03-04T14:29:41Z"
   }
 ]

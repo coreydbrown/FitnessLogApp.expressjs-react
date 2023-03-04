@@ -29,7 +29,7 @@ const StatsWeightsItem = ({ weightStatItem }) => {
           {weightStatItem.weightChange > 0 &&
             `+${weightStatItem.weightChange} lbs.`}
           {weightStatItem.weightChange < 0 &&
-            `-${weightStatItem.weightChange} lbs.`}
+            `${weightStatItem.weightChange} lbs.`}
         </Typography>
       </Box>
     </Box>
