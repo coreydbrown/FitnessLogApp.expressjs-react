@@ -8,6 +8,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Button from "@mui/material/Button";
 
 const TopbarIconGroup = () => {
   const dispatch = useDispatch();
@@ -29,9 +30,6 @@ const TopbarIconGroup = () => {
   return (
     <Box display="flex" alignItems="center">
       <ColorModeToggler isInNav={true} />
-      <IconButton aria-label="settings" sx={{ marginLeft: 1.5 }}>
-        <SettingsOutlinedIcon />
-      </IconButton>
       <IconButton
         aria-label="more"
         id="long-button"
@@ -42,6 +40,9 @@ const TopbarIconGroup = () => {
       >
         <PersonOutlineOutlinedIcon />
       </IconButton>
+      <Button variant="outlined" size="medium">
+        Sign out
+      </Button>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}

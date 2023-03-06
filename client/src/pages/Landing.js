@@ -36,14 +36,21 @@ const Landing = () => {
               color="primary"
               marginBottom={1}
             >
-              Fit Crew Connect
+              Fitness Log App
+            </Typography>
+            <Typography component="h2" variant="h5" marginBottom={1}>
+              Created by Corey D. Brown
             </Typography>
             <Typography>
-              Irure laborum eu veniam nisi et ea aliquip quis est amet nulla
-              adipisicing. Labore laboris dolore elit commodo culpa in elit.
-              Eiusmod ullamco sunt eiusmod irure fugiat nostrud tempor irure
-              culpa elit labore. Minim adipisicing nulla aute eiusmod velit
-              pariatur in ipsum esse commodo anim et.
+              Our app is designed to help you stay on track with your fitness
+              journey. Use our user-friendly interface to document your daily
+              workouts, record your body weight measurements, and gain insights
+              into your fitness habits with our statistics and interactive
+              graphs. Your personal records in different exercises are
+              automatically generated, so you will always know when you've hit a
+              new milestone. You can also record notes from your workouts,
+              reminders for the future, and goals to strive for. When it comes
+              to staying focused and motivated, we have your back!
             </Typography>
             <Button
               component={Link}
