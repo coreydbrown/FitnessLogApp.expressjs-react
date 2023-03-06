@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useLoginMutation } from "../../app/services/authApi";
+import { useLoginDemoMutation } from "../../app/services/authApi";
 import { setCredentials } from "../../app/services/authSlice";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
@@ -23,6 +24,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const [login, { isLoading }] = useLoginMutation();
+  const [loginDemo, { isLoading: isLoadingDemo }] = useLoginDemoMutation();
 
   const showAlert = useSelector((state) => state.alert.showAlert);
 
@@ -40,6 +42,14 @@ const LoginForm = () => {
       if (data) dispatch(setCredentials(data));
     },
   });
+
+  const loginDemoUser = async () => {
+    const res = await loginDemo();
+    const error = res.error;
+    const data = res.data;
+    launchAlert(dispatch, error);
+    if (data) dispatch(setCredentials(data));
+  };
 
   return (
     <>
@@ -82,7 +92,6 @@ const LoginForm = () => {
                   helperText={formik.touched.email && formik.errors.email}
                   fullWidth
                   margin="normal"
-                  autoFocus
                 />
                 <TextField
                   id="password"
@@ -116,6 +125,17 @@ const LoginForm = () => {
                   </LinkMUI>
                 </Typography>
               </Box>
+              <LoadingButton
+                loading={isLoadingDemo}
+                onClick={loginDemoUser}
+                fullWidth
+                variant="contained"
+                color="secondary"
+                size="large"
+                sx={{ mt: 3, pt: 1, pb: 1, fontSize: "large" }}
+              >
+                Demo App
+              </LoadingButton>
             </CardContent>
           </Card>
         </Box>

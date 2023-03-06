@@ -6,6 +6,9 @@ import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import Tooltip from "@mui/material/Tooltip";
 
 const Landing = () => {
   return (
@@ -40,6 +43,20 @@ const Landing = () => {
             </Typography>
             <Typography component="h2" variant="h5" marginBottom={1}>
               Created by Corey D. Brown
+              <Tooltip
+                title="Visit project repository on GitHub"
+                placement="top"
+              >
+                <IconButton
+                  href="https://github.com/coreydbrown/fitness-log-app"
+                  target="_blank"
+                  aria-label="github"
+                  size="large"
+                  sx={{ ml: 1 }}
+                >
+                  <GitHubIcon fontSize="inherit" />
+                </IconButton>
+              </Tooltip>
             </Typography>
             <Typography>
               Our app is designed to help you stay on track with your fitness

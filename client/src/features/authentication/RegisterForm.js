@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRegisterMutation } from "../../app/services/authApi";
+import { useLoginDemoMutation } from "../../app/services/authApi";
 import { setCredentials } from "../../app/services/authSlice";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
@@ -24,6 +25,7 @@ const RegisterForm = () => {
   const dispatch = useDispatch();
 
   const [register, { isLoading }] = useRegisterMutation();
+  const [loginDemo, { isLoading: isLoadingDemo }] = useLoginDemoMutation();
 
   const showAlert = useSelector((state) => state.alert.showAlert);
 
@@ -56,6 +58,14 @@ const RegisterForm = () => {
       if (data) dispatch(setCredentials(data));
     },
   });
+
+  const loginDemoUser = async () => {
+    const res = await loginDemo();
+    const error = res.error;
+    const data = res.data;
+    launchAlert(dispatch, error);
+    if (data) dispatch(setCredentials(data));
+  };
 
   return (
     <>
@@ -105,7 +115,6 @@ const RegisterForm = () => {
                       }
                       fullWidth
                       margin="normal"
-                      autoFocus
                     />
                   </Grid>
                   <Grid item xs={12} sm={6}>
@@ -181,6 +190,17 @@ const RegisterForm = () => {
                   </LinkMUI>
                 </Typography>
               </Box>
+              <LoadingButton
+                loading={isLoadingDemo}
+                onClick={loginDemoUser}
+                fullWidth
+                variant="contained"
+                color="secondary"
+                size="large"
+                sx={{ mt: 3, pt: 1, pb: 1, fontSize: "large" }}
+              >
+                Demo App
+              </LoadingButton>
             </CardContent>
           </Card>
         </Box>
