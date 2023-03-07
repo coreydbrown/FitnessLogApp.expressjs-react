@@ -9,7 +9,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import InsightsOutlinedIcon from "@mui/icons-material/InsightsOutlined";
 import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenter";
 import MonitorWeightOutlinedIcon from "@mui/icons-material/MonitorWeightOutlined";
 import EmojiEventsOutlinedIcon from "@mui/icons-material/EmojiEventsOutlined";
@@ -51,20 +51,20 @@ const Sidebar = ({ handleDrawerToggle }) => {
       </List>
       <Divider />
       <List>
-        <ListItem key="link1" disablePadding>
+        <ListItem key="stats" disablePadding>
           <ListItemButton
             onClick={handleDrawerToggle}
             component={Link}
             to="/stats"
           >
             <ListItemIcon>
-              <HomeOutlinedIcon />
+              <InsightsOutlinedIcon />
             </ListItemIcon>
             <ListItemText primary="Stats" />
           </ListItemButton>
         </ListItem>
 
-        <ListItem key="link2" disablePadding>
+        <ListItem key="workouts" disablePadding>
           <ListItemButton
             onClick={handleDrawerToggle}
             component={Link}
@@ -77,20 +77,20 @@ const Sidebar = ({ handleDrawerToggle }) => {
           </ListItemButton>
         </ListItem>
 
-        <ListItem key="link3" disablePadding>
+        <ListItem key="records" disablePadding>
           <ListItemButton
             onClick={handleDrawerToggle}
             component={Link}
-            to="/weight"
+            to="/records"
           >
             <ListItemIcon>
-              <MonitorWeightOutlinedIcon />
+              <EmojiEventsOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Weight" />
+            <ListItemText primary="Records" />
           </ListItemButton>
         </ListItem>
 
-        <ListItem key="link4" disablePadding>
+        <ListItem key="notes" disablePadding>
           <ListItemButton
             onClick={handleDrawerToggle}
             component={Link}
@@ -103,16 +103,16 @@ const Sidebar = ({ handleDrawerToggle }) => {
           </ListItemButton>
         </ListItem>
 
-        <ListItem key="link5" disablePadding>
+        <ListItem key="weight" disablePadding>
           <ListItemButton
             onClick={handleDrawerToggle}
             component={Link}
-            to="/records"
+            to="/weight"
           >
             <ListItemIcon>
-              <EmojiEventsOutlinedIcon />
+              <MonitorWeightOutlinedIcon />
             </ListItemIcon>
-            <ListItemText primary="Records" />
+            <ListItemText primary="Weight" />
           </ListItemButton>
         </ListItem>
       </List>

@@ -116,7 +116,7 @@ const LoginForm = () => {
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Sign In
+                  Sign in
                 </LoadingButton>
                 <Typography>
                   Don't have an account?{" "}

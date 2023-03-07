@@ -37,7 +37,7 @@ const StatsRecordBox = ({ mostRecentRecord }) => {
             <Typography variant="h5">
               {`${mostRecentRecord.exercise} | ${mostRecentRecord.weight} lbs. | ${mostRecentRecord.sets} sets x ${mostRecentRecord.reps} reps`}
             </Typography>
-            <Typography variant="h5" fontStyle="italic">
+            <Typography variant="h6" fontStyle="italic">
               {formatDateMedium(mostRecentRecord.date)}
             </Typography>
           </Box>

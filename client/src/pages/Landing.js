@@ -24,10 +24,10 @@ const Landing = () => {
           height="100%"
           width={{
             xs: "100%",
-            sm: "49%",
-            md: "49%",
-            lg: "49%",
-            xl: "49%",
+            sm: "48%",
+            md: "48%",
+            lg: "48%",
+            xl: "48%",
           }}
           display="flex"
           alignItems="center"
@@ -90,7 +90,7 @@ const Landing = () => {
 
         <Box
           height="100%"
-          width="49%"
+          width="48%"
           display={{
             xs: "none",
             sm: "flex",

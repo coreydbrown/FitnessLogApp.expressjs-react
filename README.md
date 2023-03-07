@@ -1,12 +1,14 @@
 # Fitness Log Web Application
 
-### URL: fitness-log-app.onrender.com
+<font size="5">Link to website: [fitness-log-app.onrender.com](fitness-log-app.onrender.com)</font>
 
-(Note: It may take up to 30 seconds for the site to spin up. This is due to hosting limitations for the free-tier option on render.com)
+<font size="4" color="#00005a">Created by: Corey D. Brown</font>
 
-##### Created by: Corey D. Brown
+Hosted on the cloud with ©Render
 
-This is a full-stack application that allows users to document their daily workouts, bodyweight measurements, and notes/reminders/goals. Personal records in every exercise are automatically determined on a continuous basis. Displayed are interactive graphs and statistics of the users fitness data. Users are also able to toggle between light and dark modes.
+## Description
+
+This is a full-stack application that allows users to document their daily workouts, bodyweight measurements, and notes/reminders/goals. Personal records in every exercise are automatically determined on a continuous basis. Displayed are interactive graphs and statistics of the users fitness data. The app is fully responsive and can be viewed on any device including phones, tablets, laptops, and desktops. Users also have the freedom to choose between light and dark modes.
 
 The app incorporates the following technologies:
 

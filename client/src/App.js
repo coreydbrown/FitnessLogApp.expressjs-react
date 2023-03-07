@@ -26,9 +26,9 @@ function App() {
           <Route index element={<Stats />} />
           <Route path="stats" element={<Stats />} />
           <Route path="workouts" element={<Workouts />} />
-          <Route path="weight" element={<Weight />} />
-          <Route path="notes" element={<Notes />} />
           <Route path="records" element={<Records />} />
+          <Route path="notes" element={<Notes />} />
+          <Route path="weight" element={<Weight />} />
         </Route>
         <Route path="/landing" element={<Landing />} />
         <Route path="/login" element={<Login />} />

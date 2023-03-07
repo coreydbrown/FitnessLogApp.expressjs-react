@@ -181,7 +181,7 @@ const RegisterForm = () => {
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Sign Up
+                  Sign up
                 </LoadingButton>
                 <Typography>
                   Already have an account?{" "}
