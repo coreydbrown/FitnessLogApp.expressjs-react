@@ -30,18 +30,20 @@ const getStats = async (req, res) => {
     (numWorkoutsLastMonth / 30) * 100
   );
 
-  // Weight change last week
+  // // Weight change last week
   const weightsLastWeek = await Weight.find({
     createdBy: req.user.userId,
     createdAt: {
       $gte: new Date(new Date() - 7 * 60 * 60 * 24 * 1000),
     },
   }).sort("-createdAt");
-  const unroundedWeightChangeLastWeek =
-    weightsLastWeek[0].weight -
-    weightsLastWeek[weightsLastWeek.length - 1].weight;
-  const weightChangeLastWeek =
-    Math.round(unroundedWeightChangeLastWeek * 10) / 10;
+  let weightChangeLastWeek = 0;
+  if (weightsLastWeek.length > 0) {
+    const unroundedWeightChangeLastWeek =
+      weightsLastWeek[0].weight -
+      weightsLastWeek[weightsLastWeek.length - 1].weight;
+    weightChangeLastWeek = Math.round(unroundedWeightChangeLastWeek * 10) / 10;
+  }
 
   // Weight change last month
   const weightsLastMonth = await Weight.find({
@@ -50,11 +52,14 @@ const getStats = async (req, res) => {
       $gte: new Date(new Date() - 30 * 60 * 60 * 24 * 1000),
     },
   }).sort("-createdAt");
-  const unroundedWeightChangeLastMonth =
-    weightsLastMonth[0].weight -
-    weightsLastMonth[weightsLastMonth.length - 1].weight;
-  const weightChangeLastMonth =
-    Math.round(unroundedWeightChangeLastMonth * 10) / 10;
+  let weightChangeLastMonth = 0;
+  if (weightsLastMonth.length > 0) {
+    const unroundedWeightChangeLastMonth =
+      weightsLastMonth[0].weight -
+      weightsLastMonth[weightsLastMonth.length - 1].weight;
+    weightChangeLastMonth =
+      Math.round(unroundedWeightChangeLastMonth * 10) / 10;
+  }
 
   // Weight change last 3 months
   const weightsLast3Months = await Weight.find({
@@ -63,11 +68,14 @@ const getStats = async (req, res) => {
       $gte: new Date(new Date() - 90 * 60 * 60 * 24 * 1000),
     },
   }).sort("-createdAt");
-  const unroundedWeightChangeLast3Months =
-    weightsLast3Months[0].weight -
-    weightsLast3Months[weightsLast3Months.length - 1].weight;
-  const weightChangeLast3Months =
-    Math.round(unroundedWeightChangeLast3Months * 10) / 10;
+  let weightChangeLast3Months = 0;
+  if (weightsLast3Months.length > 0) {
+    const unroundedWeightChangeLast3Months =
+      weightsLast3Months[0].weight -
+      weightsLast3Months[weightsLast3Months.length - 1].weight;
+    weightChangeLast3Months =
+      Math.round(unroundedWeightChangeLast3Months * 10) / 10;
+  }
 
   // Weight change last year
   const weightsLastYear = await Weight.find({
@@ -76,11 +84,13 @@ const getStats = async (req, res) => {
       $gte: new Date(new Date() - 365 * 60 * 60 * 24 * 1000),
     },
   }).sort("-createdAt");
-  const unroundedWeightChangeLastYear =
-    weightsLastYear[0].weight -
-    weightsLastYear[weightsLastYear.length - 1].weight;
-  const weightChangeLastYear =
-    Math.round(unroundedWeightChangeLastYear * 10) / 10;
+  let weightChangeLastYear = 0;
+  if (weightsLastYear.length > 0) {
+    const unroundedWeightChangeLastYear =
+      weightsLastYear[0].weight -
+      weightsLastYear[weightsLastYear.length - 1].weight;
+    weightChangeLastYear = Math.round(unroundedWeightChangeLastYear * 10) / 10;
+  }
 
   // Most recent record
   const result = await Workout.find({ createdBy: req.user.userId });

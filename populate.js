@@ -14,7 +14,7 @@ const start = async () => {
     await connectDB(process.env.MONGO_URL);
 
     // Workouts
-    await Workout.deleteMany();
+    // await Workout.deleteMany();
     const jsonWorkouts = JSON.parse(
       await readFile(new URL("./mock-data/workouts.json", import.meta.url))
     );

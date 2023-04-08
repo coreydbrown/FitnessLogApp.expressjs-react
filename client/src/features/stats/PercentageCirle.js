@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 
 const PercentageCircle = ({ percentage }) => {
   const theme = useTheme();
-  const angle = percentage * 360;
+  const angle = (percentage / 100) * 360;
   const size = "150";
 
   return (
